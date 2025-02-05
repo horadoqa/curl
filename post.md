@@ -1,4 +1,5 @@
-### 2.2. **POST Request**
+# POST Request
+
 Uma requisição **POST** é usada para enviar dados ao servidor (geralmente para criar um novo recurso).
 
 **Exemplo básico com dados em JSON:**

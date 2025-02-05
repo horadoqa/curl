@@ -1,4 +1,4 @@
-## **5. Enviar Arquivos com cURL**
+# Enviar Arquivos com cURL
 
 Você pode enviar arquivos para o servidor utilizando o método **POST** e o parâmetro `-F` (form-data).
 

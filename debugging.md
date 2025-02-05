@@ -1,4 +1,4 @@
-## **9. Debugging com cURL**
+# Debugging com cURL
 
 Se você quiser ver informações detalhadas sobre a requisição e a resposta, use a opção `-v` (verbose).
 

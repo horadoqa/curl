@@ -1,4 +1,5 @@
-### 2.4. **DELETE Request**
+# DELETE Request
+
 A requisição **DELETE** é usada para remover um recurso do servidor.
 
 **Exemplo:**

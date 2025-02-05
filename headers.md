@@ -1,4 +1,4 @@
-## **3. Adicionando Cabeçalhos (Headers)**
+## Adicionando Cabeçalhos (Headers)
 
 Você pode adicionar cabeçalhos personalizados em suas requisições com o parâmetro `-H`.
 

@@ -1,4 +1,4 @@
-## **10. Exemplo Completo de Requisição com cURL**
+# Exemplo Completo de Requisição com cURL
 
 Vamos construir um exemplo completo de uma requisição **POST** com autenticação, envio de dados em JSON, e cabeçalhos personalizados:
 

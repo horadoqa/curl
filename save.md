@@ -1,4 +1,4 @@
-## **6. Salvando a Resposta em um Arquivo**
+# Salvando a Resposta em um Arquivo
 
 Para salvar a resposta de uma requisição em um arquivo, use o parâmetro `-o` (output).
 

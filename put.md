@@ -1,4 +1,5 @@
-### 2.3. **PUT Request**
+# PUT Request
+
 A requisição **PUT** é usada para atualizar um recurso existente no servidor.
 
 **Exemplo:**

@@ -1,4 +1,4 @@
-## **7. Seguir Redirecionamentos**
+# Seguir Redirecionamentos
 
 O parâmetro `-L` permite que o cURL siga redirecionamentos HTTP automaticamente.
 

@@ -4,7 +4,17 @@
 Na maioria das distribuições Linux, o **cURL** já vem instalado. Caso não esteja instalado, você pode instalá-lo com o comando:
 ```bash
 sudo apt update
-sudo apt install curl  # Para distribuições baseadas no Debian/Ubuntu
+sudo apt install curl
+```
+
+Verificando a versão
+```bash
+curl --version
+```
+
+Manual
+```bash
+curl --manual
 ```
 
 ### Para macOS:

@@ -1,4 +1,4 @@
-## **8. Visualizando Cabeçalhos da Requisição e Resposta**
+# Visualizando Cabeçalhos da Requisição e Resposta
 
 Você pode visualizar os cabeçalhos das requisições e respostas com o parâmetro `-i`.
 

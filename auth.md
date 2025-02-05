@@ -1,4 +1,4 @@
-## **4. Autenticação com cURL**
+# Autenticação com cURL
 
 O cURL permite realizar requisições autenticadas. Você pode passar a autenticação no formato **Basic** ou **Bearer Token**.
 
