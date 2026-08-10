@@ -1,0 +1,45 @@
+name: Teste de API - ServeRest
+
+on:
+  # Executa todos os dias às 09:00 no horário de Brasília (12:00 UTC)
+  schedule:
+    - cron: "0 12 * * *"
+
+  # Permite executar manualmente pelo GitHub
+  workflow_dispatch:
+
+jobs:
+  api-test:
+    name: Executar testes CRUD da API
+    runs-on: ubuntu-latest
+
+    steps:
+      # ======================================
+      # Checkout do repositório
+      # ======================================
+
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      # ======================================
+      # Instalar dependências
+      # ======================================
+
+      - name: Instalar jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      # ======================================
+      # Dar permissão para executar o script
+      # ======================================
+
+      - name: Dar permissão ao script
+        run: chmod +x .crud/crud_serverest.sh
+
+      # ======================================
+      # Executar teste da API
+      # ======================================
+
+      - name: Executar testes CRUD
+        run: ./crud/crud_serverest.sh

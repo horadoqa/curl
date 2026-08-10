@@ -1,59 +1,123 @@
-# cURL
-
 <div align="center">
     <img src="./images/curl-transparent.png">
 </div>
 
-### Requisições com cURL
+O **cURL** é uma ferramenta de linha de comando utilizada para **transferir dados entre um cliente e um servidor** por meio de diversos protocolos, incluindo **HTTP, HTTPS, FTP, FTPS, SCP, SFTP, LDAP**, entre outros.
 
-O **cURL** é uma ferramenta de linha de comando que permite transferir dados de ou para um servidor, utilizando diversos protocolos como HTTP, HTTPS, FTP, FTPS, SCP, SFTP, LDAP, e outros. Ele é extremamente útil para interagir com APIs, testar endpoints e realizar várias operações de rede diretamente pelo terminal.
+No contexto de desenvolvimento e testes, o cURL é especialmente útil para **interagir com APIs, testar endpoints, enviar dados, realizar autenticação e analisar respostas HTTP diretamente pelo terminal**.
 
-## ServeRest
+Ao longo deste material, utilizaremos o cURL para aprender, na prática, como realizar diferentes tipos de requisições HTTP.
+
+---
 
 <div align="center">
     <img src="./images/logo.png">
 </div>
 
-Para este experimento utilizaremos o [ServeRest](https://serverest.dev/) é uma API REST gratuita que simula uma loja virtual com intuito de servir de material de estudos de testes de API.
+Para os exemplos deste material, utilizaremos o **ServeRest**, uma API REST gratuita criada para **simular uma aplicação de loja virtual** e facilitar o aprendizado e a prática de **testes de APIs**.
 
-Repositório: github.com/ServeRest/ServeRest
+O ServeRest disponibiliza endpoints para trabalhar com diferentes recursos, como:
 
-Créditos: [Paulo Gonçalves - Website](https://www.linkedin.com/in/paulo-goncalves/)
+* Usuários
+* Produtos
+* Carrinhos
+* Autenticação
 
+A documentação oficial pode ser acessada em [serverest.dev](https://serverest.dev/?utm_source=chatgpt.com).
+
+### Repositório
+
+O código-fonte do projeto está disponível no GitHub:
+
+[GitHub — ServeRest](https://github.com/ServeRest/ServeRest?utm_source=chatgpt.com)
+
+---
 
 ## Neste guia
 
-Vamos explorar os principais tipos de requisições feitas com o **cURL**, incluindo exemplos de uso.
+Neste material, vamos explorar os principais recursos do **cURL** e aprender como utilizá-lo para realizar requisições e interagir com uma API REST.
 
-1. [Instalação do cURL](install.md)
+### 1. Instalação
 
-2. Realizando Requisições com cURL
+* [**Instalação do cURL**](./docs/install.md)
 
-- 2.1. [**GET Request**](./get.md)
-- 2.2. [**POST Request**](post.md)
-- 2.3. [**PUT Request**](./put.md)
-- 2.4. [**DELETE Request**](./delete.md)
+### 2. Requisições HTTP — CRUD
 
-3. [Adicionando Cabeçalhos (Headers)]()
+Nesta etapa, vamos aprender os principais métodos HTTP utilizados para realizar operações de **CRUD**:
 
-4. [Autenticação com cURL]()
+* [**GET — Read**](./docs/get.md) — consultar dados
+* [**POST — Create**](./docs/post.md) — criar recursos
+* [**PUT — Update**](./docs/put.md) — atualizar recursos
+* [**DELETE — Delete**](./docs/delete.md) — excluir recursos
 
-5. [Enviar Arquivos com cURL]()
+### 3. Headers
 
-6. [Salvando a Resposta em um Arquivo]()
+* [**Adicionando Cabeçalhos (Headers)**](./docs/headers.md)
 
-7. [Seguir Redirecionamentos]()
+Aprenderemos como enviar informações adicionais nas requisições, como `Content-Type`, `Accept` e `Authorization`.
 
-8. [Visualizando Cabeçalhos da Requisição e Resposta]()
+### 4. Login
 
-9. [Debugging com cURL]()
+* [**Login**](./docs/login.md)
 
-10. [Exemplo Completo de Requisição com cURL]()
+Aprenderemos como realizar a autenticação de um usuário utilizando o endpoint de login do ServeRest.
 
+### 5. Autenticação
 
+* [**Autenticação**](./docs/auth.md)
 
-## **Conclusão**
+Veremos como utilizar tokens de autenticação nas requisições por meio do header `Authorization`.
 
-O **cURL** é uma ferramenta poderosa para fazer requisições HTTP diretamente do terminal, especialmente útil para testar APIs e interagir com servidores. Com ele, você pode fazer qualquer tipo de requisição HTTP, enviar dados, realizar autenticação e obter respostas com facilidade.
+### 6. Upload de arquivos
 
-Esta documentação abrange as operações básicas, mas o **cURL** oferece muitos outros recursos, como manipulação de cookies, suporte a proxies, e mais. Você pode consultar a [documentação oficial do cURL](https://curl.se/docs/) para explorar ainda mais funcionalidades avançadas.
+* [**Enviando Arquivos com cURL**](./docs/file.md)
+
+Aprenderemos como enviar arquivos utilizando `multipart/form-data` e o parâmetro `-F`.
+
+### 7. Download de arquivos e respostas
+
+* [**Salvando a Resposta em um Arquivo**](./docs/save.md)
+
+Veremos como salvar o conteúdo retornado por uma API em um arquivo.
+
+### 8. Redirecionamentos
+
+* [**Seguindo Redirecionamentos**](./docs/redirect.md)
+
+Aprenderemos como fazer o cURL seguir redirecionamentos HTTP automaticamente.
+
+### 9. Headers da resposta
+
+* [**Visualizando Cabeçalhos da Requisição e Resposta**](./docs/cabecalho.md)
+
+Veremos como visualizar os headers retornados pelo servidor utilizando a opção `-i`.
+
+### 10. Debugging
+
+* [**Debugging com cURL**](./docs/debugging.md)
+
+Aprenderemos como utilizar o modo `verbose` (`-v`) para analisar detalhadamente a comunicação entre o cURL e o servidor.
+
+---
+
+## Conclusão
+
+O **cURL** é uma ferramenta simples, poderosa e muito útil para quem trabalha com **APIs, desenvolvimento e testes de software**.
+
+Com ele, podemos realizar operações como:
+
+* Fazer requisições HTTP.
+* Criar, consultar, atualizar e excluir recursos.
+* Enviar dados em JSON.
+* Adicionar headers.
+* Realizar autenticação.
+* Enviar arquivos.
+* Salvar respostas em arquivos.
+* Visualizar headers HTTP.
+* Investigar problemas utilizando o modo de debugging.
+
+Este material apresenta os principais recursos necessários para começar a utilizar o cURL em testes e integrações com APIs.
+
+O cURL possui muitos outros recursos, incluindo **cookies, proxies, certificados, diferentes métodos de autenticação, configuração de conexões e diversas opções avançadas**.
+
+Para aprofundar seus conhecimentos, consulte a [documentação oficial do cURL](https://curl.se/docs/?utm_source=chatgpt.com).
