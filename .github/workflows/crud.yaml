@@ -35,11 +35,11 @@ jobs:
       # ======================================
 
       - name: Dar permissão ao script
-        run: chmod +x ./crud/crud_serverest.sh
+        run: chmod +x crud/crud_serverest.sh
 
       # ======================================
       # Executar teste da API
       # ======================================
 
       - name: Executar testes CRUD
-        run: ./crud/crud_serverest.sh
+        run: crud/crud_serverest.sh
