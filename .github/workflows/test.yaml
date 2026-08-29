@@ -33,10 +33,10 @@ jobs:
           sudo apt-get install -y jq
 
       - name: Dar permissão ao script
-        run: chmod +x crud/crud_serverest.sh
+        run: chmod +x teste/automatizado.sh
 
       - name: Executar testes CRUD
-        run: crud/crud_serverest.sh
+        run: teste/automatizado.sh
 
 
   # ======================================
