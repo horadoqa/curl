@@ -92,6 +92,47 @@ else
 fi
 
 # ======================================
+# Validação do conteúdo do JSON
+# ======================================
+
+READ_NOME=$(echo "$READ_BODY" | jq -r '.nome')
+READ_EMAIL=$(echo "$READ_BODY" | jq -r '.email')
+READ_ADMINISTRADOR=$(echo "$READ_BODY" | jq -r '.administrador')
+READ_ID=$(echo "$READ_BODY" | jq -r '._id')
+
+if [ "$READ_NOME" = "Hora do QA" ] &&
+[ "$READ_EMAIL" = "$EMAIL" ] &&
+[ "$READ_ADMINISTRADOR" = "false" ] &&
+[ "$READ_ID" = "$USER_ID" ]; then
+
+echo "✅ Conteúdo do JSON validado com sucesso."
+echo "   Nome: $READ_NOME"
+echo "   Email: $READ_EMAIL"
+echo "   Administrador: $READ_ADMINISTRADOR"
+echo "   ID: $READ_ID"
+
+else
+echo "❌ Conteúdo do JSON está incorreto."
+
+echo "Esperado:"
+echo "   Nome: Hora do QA"
+echo "   Email: $EMAIL"
+echo "   Administrador: false"
+echo "   ID: $USER_ID"
+
+echo ""
+echo "Recebido:"
+echo "   Nome: $READ_NOME"
+echo "   Email: $READ_EMAIL"
+echo "   Administrador: $READ_ADMINISTRADOR"
+echo "   ID: $READ_ID"
+
+echo "⛔ Processo interrompido!"
+exit 1
+
+fi
+
+# ======================================
 # UPDATE - Atualizar usuário
 # ======================================
 
@@ -121,6 +162,7 @@ else
     exit 1
 fi
 
+
 # ======================================
 # READ - Consultar usuário atualizado
 # ======================================
@@ -145,6 +187,22 @@ else
     exit 1
 fi
 
+UPDATED_NOME=$(echo "$READ_UPDATE_BODY" | jq -r '.nome')
+UPDATED_EMAIL=$(echo "$READ_UPDATE_BODY" | jq -r '.email')
+UPDATED_ADMINISTRADOR=$(echo "$READ_UPDATE_BODY" | jq -r '.administrador')
+UPDATED_ID=$(echo "$READ_UPDATE_BODY" | jq -r '._id')
+
+if [ "$UPDATED_NOME" = "Hora do QA - Atualizado" ] &&
+   [ "$UPDATED_EMAIL" = "$EMAIL" ] &&
+   [ "$UPDATED_ADMINISTRADOR" = "true" ] &&
+   [ "$UPDATED_ID" = "$USER_ID" ]; then
+
+    echo "✅ Conteúdo do JSON após UPDATE validado com sucesso."
+else
+    echo "❌ Conteúdo do JSON após UPDATE está incorreto."
+    exit 1
+fi
+
 # ======================================
 # DELETE - Excluir usuário
 # ======================================
@@ -157,10 +215,12 @@ DELETE_RESPONSE=$(curl -s -w "\n%{http_code}" \
 
 DELETE_STATUS=$(echo "$DELETE_RESPONSE" | tail -n 1)
 DELETE_BODY=$(echo "$DELETE_RESPONSE" | sed '$d')
+DELETE_MESSAGE=$(echo "$DELETE_BODY" | jq -r '.message')
 
 echo "$DELETE_BODY" | jq .
 
-if [ "$DELETE_STATUS" -eq 200 ]; then
+if [ "$DELETE_STATUS" -eq 200 ] &&
+   [ "$DELETE_MESSAGE" = "Registro excluído com sucesso" ]; then
     echo "✅ DELETE aprovado - Status Code: $DELETE_STATUS"
 else
     echo "❌ DELETE reprovado - Status Code: $DELETE_STATUS"
