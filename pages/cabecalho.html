@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>cURL — Visualizando Headers</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+  <main class="page">
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+      <div class="logo">
+
+        <img
+          src="logo.png"
+          alt="Logo"
+        >
+
+      </div>
+
+
+      <div class="brand">
+
+        <span class="eyebrow">
+          Software Quality / API
+        </span>
+
+        <span class="brand-name">
+          Hora do QA
+        </span>
+
+      </div>
+
+
+      <div class="status">
+
+        <span class="status-indicator"></span>
+
+        <span>
+          CURL / RESPONSE
+        </span>
+
+      </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+      <div class="hero-label">
+        cURL
+      </div>
+
+
+      <h1>
+        Visualizando<br>
+        Headers
+      </h1>
+
+
+      <p class="hero-description">
+        Como visualizar os cabeçalhos HTTP retornados pelo
+        servidor utilizando o cURL e entender a diferença
+        entre as opções <strong>-i</strong> e <strong>-v</strong>.
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         CONCEPT
+    ========================= -->
+
+    <article class="concept">
+
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          CONCEITO / 07
+        </span>
+
+        <span class="concept-status">
+          HTTP / RESPONSE
+        </span>
+
+      </div>
+
+
+      <h2>
+        Visualizando Cabeçalhos
+      </h2>
+
+
+      <div class="concept-subtitle">
+        cURL / Response Headers
+      </div>
+
+
+      <!-- =========================
+           CONCEITO
+      ========================= -->
+
+      <h3>
+        O que são Headers?
+      </h3>
+
+      <p class="concept-description">
+        Em uma requisição HTTP, os <strong>headers</strong>
+        carregam informações importantes sobre a comunicação
+        entre o cliente e o servidor.
+      </p>
+
+      <p class="concept-description">
+        No cURL, podemos utilizar a opção <strong>-i</strong>,
+        também conhecida como <strong>--include</strong>,
+        para exibir os cabeçalhos da resposta HTTP junto
+        com o corpo da resposta.
+      </p>
+
+
+      <!-- =========================
+           COMANDO
+      ========================= -->
+
+      <h3>
+        Comando
+      </h3>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -i https://serverest.dev/usuarios</span></code></pre>
+
+
+      <!-- =========================
+           EXEMPLO
+      ========================= -->
+
+      <h3>
+        Exemplo de Resposta
+      </h3>
+
+      <p class="concept-description">
+        Ao utilizar o <strong>-i</strong>, o cURL exibirá
+        primeiro os headers retornados pelo servidor e,
+        em seguida, o conteúdo da resposta.
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">HTTP/1.1 200 OK</span><span class="code-line" data-line="2">Content-Type: application/json</span><span class="code-line" data-line="3">Content-Length: 123</span><span class="code-line" data-line="4">Date: Mon, 10 Aug 2026 10:00:00 GMT</span><span class="code-line" data-line="5"></span><span class="code-line" data-line="6">{</span><span class="code-line" data-line="7">    "quantidade": 2,</span><span class="code-line" data-line="8">    "usuarios": [...]</span><span class="code-line" data-line="9">}</span></code></pre>
+
+
+      <!-- =========================
+           EXPLICAÇÃO
+      ========================= -->
+
+      <h3>
+        Entendendo a Resposta
+      </h3>
+
+      <p class="concept-description">
+        A primeira linha representa o <strong>status da resposta
+        HTTP</strong>.
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">HTTP/1.1 200 OK</span></code></pre>
+
+      <p class="concept-description">
+        O status <strong>200 OK</strong> indica que a requisição
+        foi processada com sucesso.
+      </p>
+
+
+      <p class="concept-description">
+        Já o header <strong>Content-Type</strong> informa o
+        formato do conteúdo retornado pelo servidor:
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">Content-Type: application/json</span></code></pre>
+
+      <p class="concept-description">
+        Nesse caso, o servidor informa que o conteúdo da
+        resposta está no formato <strong>JSON</strong>.
+      </p>
+
+
+      <!-- =========================
+           HEADERS + BODY
+      ========================= -->
+
+      <h3>
+        Headers e Body
+      </h3>
+
+      <p class="concept-description">
+        Depois dos headers existe uma linha em branco que
+        separa os <strong>cabeçalhos</strong> do
+        <strong>corpo da resposta</strong>.
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">Content-Type: application/json</span><span class="code-line" data-line="2"></span><span class="code-line" data-line="3">{</span><span class="code-line" data-line="4">    "quantidade": 2,</span><span class="code-line" data-line="5">    "usuarios": [...]</span><span class="code-line" data-line="6">}</span></code></pre>
+
+
+      <!-- =========================
+           -I
+      ========================= -->
+
+      <h3>
+        Opção -i
+      </h3>
+
+      <p class="concept-description">
+        A opção <strong>-i</strong> inclui os headers da
+        resposta na saída do cURL juntamente com o corpo.
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -i https://serverest.dev/usuarios</span></code></pre>
+
+      <p class="concept-description">
+        Essa opção é útil quando queremos verificar rapidamente
+        informações como <strong>status code</strong>,
+        <strong>Content-Type</strong>,
+        <strong>Content-Length</strong>, cookies e outros
+        headers retornados pelo servidor.
+      </p>
+
+
+      <!-- =========================
+           -V
+      ========================= -->
+
+      <h3>
+        Opção -v
+      </h3>
+
+      <p class="concept-description">
+        O <strong>-v</strong>, de <strong>verbose</strong>,
+        apresenta informações mais detalhadas sobre a
+        comunicação entre o cURL e o servidor.
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -v https://serverest.dev/usuarios</span></code></pre>
+
+      <p class="concept-description">
+        O modo verbose permite observar informações como
+        conexão, requisição enviada, headers enviados e
+        headers recebidos.
+      </p>
+
+      <p class="concept-description">
+        Por isso, essa opção é especialmente útil quando
+        estamos realizando <strong>debugging</strong> de
+        uma requisição.
+      </p>
+
+
+      <!-- =========================
+           COMPARAÇÃO
+      ========================= -->
+
+      <h3>
+        -i vs -v
+      </h3>
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+
+              <th>
+                Opção
+              </th>
+
+              <th>
+                Utilização
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody>
+
+            <tr>
+
+              <td>
+                <code>-i</code>
+              </td>
+
+              <td>
+                Inclui os headers da resposta junto com
+                o corpo retornado pelo servidor.
+              </td>
+
+            </tr>
+
+
+            <tr>
+
+              <td>
+                <code>-v</code>
+              </td>
+
+              <td>
+                Exibe informações detalhadas sobre a
+                comunicação HTTP, incluindo requisição,
+                resposta e conexão.
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <!-- =========================
+           RESUMO
+      ========================= -->
+
+      <h3>
+        Resumindo
+      </h3>
+
+      <p class="concept-description">
+        Para visualizar os headers da resposta junto com
+        o corpo, podemos utilizar:
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -i &lt;URL&gt;</span></code></pre>
+
+      <p class="concept-description">
+        O <strong>-i</strong> é útil para observar rapidamente
+        os headers retornados pelo servidor.
+      </p>
+
+      <p class="concept-description">
+        Já o <strong>-v</strong> fornece informações mais
+        detalhadas sobre todo o processo de comunicação HTTP.
+      </p>
+
+
+      <!-- =========================
+           QA NOTE
+      ========================= -->
+
+      <div class="note">
+
+        <span class="note-label">
+          QA Note
+        </span>
+
+        <p>
+          Durante testes de API, o <strong>-i</strong> é útil
+          para verificar rapidamente o status e os headers
+          retornados pelo servidor. Quando precisamos
+          investigar a comunicação com mais detalhes,
+          o <strong>-v</strong> permite acompanhar informações
+          adicionais da requisição e da resposta.
+        </p>
+
+      </div>
+
+
+    </article>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+      <div class="footer-brand">
+        Hora do QA
+      </div>
+
+
+      <div class="footer-meta">
+
+        <span>
+          CURL / REF-007
+        </span>
+
+        <span>
+          QUALITY NOTES
+        </span>
+
+        <span class="footer-pass">
+          READY
+        </span>
+
+      </div>
+
+    </footer>
+
+
+  </main>
+
+</body>
+
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>cURL — POST Request</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+</head>
+
+
+<body>
+
+  <main class="page">
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+      <div class="logo">
+
+        <img src="logo.png" alt="Logo">
+
+      </div>
+
+
+      <div class="brand">
+
+        <span class="eyebrow">
+          API / HTTP / COMMAND LINE
+        </span>
+
+        <span class="brand-name">
+          Hora do QA
+        </span>
+
+      </div>
+
+
+      <div class="status">
+
+        <span class="status-indicator"></span>
+
+        <span>
+          CURL / READY
+        </span>
+
+      </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+      <div class="hero-label">
+        cURL
+      </div>
+
+
+      <h1>
+        CREATE —<br>
+        POST Request
+      </h1>
+
+
+      <p class="hero-description">
+        Como utilizar o cURL para enviar dados ao servidor
+        e criar um novo usuário através de uma requisição
+        HTTP POST no ServeRest.
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         CONCEPT
+    ========================= -->
+
+    <article class="concept">
+
+
+      <!-- =========================
+           CONCEITO
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          CONCEITO / 01
+        </span>
+
+        <span class="concept-status">
+          CREATE / POST
+        </span>
+
+      </div>
+
+
+      <h2>
+        POST Request
+      </h2>
+
+
+      <div class="concept-subtitle">
+        HTTP / CREATE
+      </div>
+
+
+      <p class="concept-description">
+        A requisição <strong>POST</strong> é utilizada para
+        <strong>enviar dados ao servidor</strong>, geralmente
+        com o objetivo de criar um novo recurso.
+      </p>
+
+
+      <p class="concept-description">
+        No ServeRest, podemos utilizar o método POST para
+        cadastrar um novo usuário.
+      </p>
+
+
+      <!-- =========================
+           ENDPOINT
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          ENDPOINT / 01
+        </span>
+
+        <span class="concept-status">
+          USERS
+        </span>
+
+      </div>
+
+
+      <h2>
+        Endpoint
+      </h2>
+
+
+      <div class="concept-subtitle">
+        POST / usuarios
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">POST https://serverest.dev/usuarios</span></code></pre>
+
+
+      <!-- =========================
+           EXEMPLO
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          EXEMPLO / 01
+        </span>
+
+        <span class="concept-status">
+          REQUEST
+        </span>
+
+      </div>
+
+
+      <h2>
+        Criando um usuário
+      </h2>
+
+
+      <div class="concept-subtitle">
+        cURL + JSON
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X POST https://serverest.dev/usuarios \</span><span class="code-line" data-line="2">-H "Content-Type: application/json" \</span><span class="code-line" data-line="3">-d '{</span><span class="code-line" data-line="4">    "nome": "Hora do QA",</span><span class="code-line" data-line="5">    "email": "horadoqa@email.com",</span><span class="code-line" data-line="6">    "password": "1q2w3e4r",</span><span class="code-line" data-line="7">    "administrador": "true"</span><span class="code-line" data-line="8">}'</span></code></pre>
+
+
+      <!-- =========================
+           EXPLICAÇÃO
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          EXPLICAÇÃO / 01
+        </span>
+
+        <span class="concept-status">
+          HOW IT WORKS
+        </span>
+
+      </div>
+
+
+      <h2>
+        Entendendo a requisição
+      </h2>
+
+
+      <div class="concept-subtitle">
+        Método HTTP
+      </div>
+
+
+      <p class="concept-description">
+        <strong>-X POST</strong>: define o método HTTP como
+        <strong>POST</strong>.
+      </p>
+
+
+      <div class="concept-subtitle">
+        Content-Type
+      </div>
+
+
+      <p class="concept-description">
+        <strong>-H "Content-Type: application/json"</strong>:
+        informa ao servidor que os dados enviados estão no
+        formato <strong>JSON</strong>.
+      </p>
+
+
+      <div class="concept-subtitle">
+        Request Body
+      </div>
+
+
+      <p class="concept-description">
+        <strong>-d '{...}'</strong>: define o
+        <strong>body da requisição</strong>, ou seja,
+        os dados que serão enviados para o servidor.
+      </p>
+
+
+      <!-- =========================
+           BODY
+      ========================= -->
+
+      <div class="concept-subtitle">
+        Dados enviados
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">    "nome": "Hora do QA",</span><span class="code-line" data-line="3">    "email": "horadoqa@email.com",</span><span class="code-line" data-line="4">    "password": "1q2w3e4r",</span><span class="code-line" data-line="5">    "administrador": "true"</span><span class="code-line" data-line="6">}</span></code></pre>
+
+
+      <p class="concept-description">
+        Nesse exemplo, estamos enviando os dados de um
+        novo usuário para o servidor.
+      </p>
+
+
+      <p class="concept-description">
+        O servidor recebe essas informações, valida os
+        dados e tenta criar um novo cadastro.
+      </p>
+
+
+      <!-- =========================
+           RESPONSE
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          RESPONSE / 01
+        </span>
+
+        <span class="concept-status">
+          201 CREATED
+        </span>
+
+      </div>
+
+
+      <h2>
+        Resposta de sucesso
+      </h2>
+
+
+      <div class="concept-subtitle">
+        HTTP / Created
+      </div>
+
+
+      <p class="concept-description">
+        Quando o cadastro é realizado com sucesso, o
+        ServeRest retorna o status <strong>201 Created</strong>,
+        indicando que um novo recurso foi criado.
+      </p>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">    "message": "Cadastro realizado com sucesso",</span><span class="code-line" data-line="3">    "_id": "7tS9K8NxabeHLEtk"</span><span class="code-line" data-line="4">}</span></code></pre>
+
+
+      <p class="concept-description">
+        A resposta contém uma mensagem de confirmação e
+        o <strong>_id</strong> gerado para o novo usuário.
+      </p>
+
+
+      <p class="concept-description">
+        O <strong>_id</strong> é um identificador único
+        utilizado para localizar esse usuário em outras
+        requisições, como <strong>GET</strong>,
+        <strong>PUT</strong> e <strong>DELETE</strong>.
+      </p>
+
+
+      <!-- =========================
+           DUPLICATED EMAIL
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          RESPONSE / 02
+        </span>
+
+        <span class="concept-status">
+          VALIDATION
+        </span>
+
+      </div>
+
+
+      <h2>
+        E-mail já cadastrado
+      </h2>
+
+
+      <div class="concept-subtitle">
+        Regra de negócio
+      </div>
+
+
+      <p class="concept-description">
+        O campo <strong>email</strong> deve ser único.
+        Portanto, se tentarmos cadastrar outro usuário
+        utilizando um e-mail que já existe, o ServeRest
+        retornará uma mensagem informando que o e-mail
+        já está sendo utilizado.
+      </p>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">    "message": "Este email já está sendo usado"</span><span class="code-line" data-line="3">}</span></code></pre>
+
+
+      <!-- =========================
+           QA NOTE
+      ========================= -->
+
+      <div class="note">
+
+        <span class="note-label">
+          QA Note
+        </span>
+
+        <p>
+          Em testes de API, cenários de sucesso e de
+          validação devem ser considerados. Além do
+          <strong>201 Created</strong>, vale testar regras
+          como e-mail duplicado e dados inválidos.
+        </p>
+
+      </div>
+
+
+      <!-- =========================
+           RESUMO
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          RESUMO / 01
+        </span>
+
+        <span class="concept-status">
+          CRUD / CREATE
+        </span>
+
+      </div>
+
+
+      <h2>
+        POST = Create
+      </h2>
+
+
+      <div class="concept-subtitle">
+        Fluxo de criação
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">1. Utilizar o método POST</span><span class="code-line" data-line="2">2. Informar o endpoint /usuarios</span><span class="code-line" data-line="3">3. Enviar os dados no body</span><span class="code-line" data-line="4">4. Enviar os dados em formato JSON</span><span class="code-line" data-line="5">5. O servidor valida os dados</span><span class="code-line" data-line="6">6. Um novo usuário é criado</span><span class="code-line" data-line="7">7. O servidor retorna o _id</span></code></pre>
+
+
+      <p class="concept-description">
+        O <strong>POST</strong> representa a operação
+        <strong>Create</strong> no CRUD: enviar dados ao
+        servidor para criar um novo recurso.
+      </p>
+
+
+      <div class="note">
+
+        <span class="note-label">
+          QA Note
+        </span>
+
+        <p>
+          O resultado esperado de uma criação bem-sucedida
+          é o status <strong>201 Created</strong>. O
+          identificador retornado pode ser utilizado nas
+          próximas etapas do teste, como consultas com
+          <strong>GET</strong>, alterações com <strong>PUT</strong>
+          ou exclusão com <strong>DELETE</strong>.
+        </p>
+
+      </div>
+
+
+    </article>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+      <div class="footer-brand">
+        Hora do QA
+      </div>
+
+
+      <div class="footer-meta">
+
+        <span>
+          CURL / SERIES-003
+        </span>
+
+        <span>
+          API QUALITY NOTES
+        </span>
+
+        <span class="footer-pass">
+          READY
+        </span>
+
+      </div>
+
+    </footer>
+
+
+  </main>
+
+</body>
+
+</html>

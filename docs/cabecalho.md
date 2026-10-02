@@ -6,7 +6,7 @@ No cURL, podemos utilizar a opção **`-i`** (`--include`) para exibir os **cabe
 
 ### Exemplo
 
-```bash j2h4kf"
+```bash
 curl -i https://serverest.dev/usuarios
 ```
 
@@ -16,7 +16,7 @@ Ao utilizar o `-i`, o cURL exibirá primeiro os headers retornados pelo servidor
 
 A saída será semelhante a:
 
-```text p8q3ls"
+```text
 HTTP/1.1 200 OK
 Content-Type: application/json
 Content-Length: 123
@@ -30,7 +30,7 @@ Date: Mon, 10 Aug 2026 10:00:00 GMT
 
 Nesse exemplo, podemos observar:
 
-```text qf7v2a"
+```text
 HTTP/1.1 200 OK
 ```
 
@@ -38,7 +38,7 @@ Esse é o **status da resposta**, indicando que a requisição foi processada co
 
 Já:
 
-```text c4z8mn"
+```text
 Content-Type: application/json
 ```
 
@@ -46,7 +46,7 @@ informa que o conteúdo retornado pelo servidor está no formato **JSON**.
 
 Depois dos headers, temos uma linha em branco que separa os **cabeçalhos** do **corpo da resposta**:
 
-```text m5q2xr"
+```text
 Content-Type: application/json
 
 {
@@ -61,7 +61,7 @@ Content-Type: application/json
 
 #### `-i`
 
-```bash 4e6hsp"
+```bash
 curl -i https://serverest.dev/usuarios
 ```
 
@@ -77,7 +77,7 @@ O `-i` inclui os **headers da resposta** na saída, juntamente com o corpo.
 
 #### `-v`
 
-```bash 5k9rwd"
+```bash
 curl -v https://serverest.dev/usuarios
 ```
 
@@ -89,7 +89,7 @@ Por isso, o `-v` é mais indicado quando estamos realizando **debugging** de uma
 
 A opção:
 
-```bash 8w4nvc"
+```bash
 curl -i <URL>
 ```
 

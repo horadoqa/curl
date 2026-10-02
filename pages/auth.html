@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>cURL — Autenticação</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <main class="page">
+
+
+        <!-- =========================
+         HEADER
+    ========================= -->
+
+        <header>
+
+            <div class="logo">
+
+                <img src="logo.png" alt="Logo">
+
+            </div>
+
+
+            <div class="brand">
+
+                <span class="eyebrow">
+                    Software Quality / API
+                </span>
+
+                <span class="brand-name">
+                    Hora do QA
+                </span>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    CURL / AUTHENTICATION
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+         HERO
+    ========================= -->
+
+        <section class="hero">
+
+            <div class="hero-label">
+                cURL
+            </div>
+
+
+            <h1>
+                Autenticação<br>
+                com cURL
+            </h1>
+
+
+            <p class="hero-description">
+                Como utilizar o cURL para enviar credenciais,
+                trabalhar com <strong>Basic Authentication</strong>
+                e utilizar <strong>Bearer Tokens</strong> em
+                requisições protegidas.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+         CONCEPT
+    ========================= -->
+
+        <article class="concept">
+
+
+            <div class="concept-top">
+
+                <span class="concept-number">
+                    CONCEITO / 09
+                </span>
+
+                <span class="concept-status">
+                    HTTP / AUTHENTICATION
+                </span>
+
+            </div>
+
+
+            <h2>
+                Autenticação com cURL
+            </h2>
+
+
+            <div class="concept-subtitle">
+                cURL / Authentication
+            </div>
+
+
+            <!-- =========================
+           CONCEITO
+      ========================= -->
+
+            <h3>
+                Por que utilizar autenticação?
+            </h3>
+
+            <p class="concept-description">
+                Algumas APIs exigem que o cliente esteja
+                <strong>autenticado</strong> antes de permitir
+                o acesso a determinados recursos.
+            </p>
+
+            <p class="concept-description">
+                O cURL permite enviar informações de autenticação
+                de diferentes formas. Duas das mais comuns são:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    <strong>Basic Authentication</strong>
+                </li>
+
+                <li>
+                    <strong>Bearer Token</strong>
+                </li>
+
+            </ul>
+
+
+            <!-- =========================
+           BASIC AUTH
+      ========================== -->
+
+            <h3>
+                Basic Authentication
+            </h3>
+
+            <p class="concept-description">
+                Na autenticação <strong>Basic</strong>, o usuário
+                e a senha são enviados por meio do header
+                <code>Authorization</code>.
+            </p>
+
+            <p class="concept-description">
+                No cURL, podemos utilizar a opção
+                <strong>-u</strong>, também conhecida como
+                <strong>--user</strong>, para informar as credenciais.
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -u usuario:senha https://api.exemplo.com/usuarios</span></code></pre>
+
+
+            <!-- =========================
+           BASIC HEADER
+      ========================== -->
+
+            <h3>
+                Header Authorization
+            </h3>
+
+            <p class="concept-description">
+                O cURL transforma as credenciais para o formato
+                utilizado pelo protocolo HTTP e envia um header
+                semelhante a:
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">Authorization: Basic &lt;credenciais&gt;</span></code></pre>
+
+
+            <p class="concept-description">
+                Por exemplo:
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -u joao:123456 https://api.exemplo.com/usuarios</span></code></pre>
+
+
+            <!-- =========================
+           HTTPS
+      ========================== -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    Segurança
+                </span>
+
+                <p>
+                    A autenticação Basic não significa que usuário
+                    e senha sejam protegidos durante o transporte
+                    por si só. Em aplicações reais, a comunicação
+                    deve utilizar <strong>HTTPS</strong> para proteger
+                    as credenciais durante a transmissão.
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+           BEARER
+      ========================== -->
+
+            <h3>
+                Bearer Token
+            </h3>
+
+            <p class="concept-description">
+                Outra forma muito comum de autenticação é o uso
+                de um <strong>Bearer Token</strong>.
+            </p>
+
+            <p class="concept-description">
+                Nesse modelo, o cliente primeiro obtém um token,
+                normalmente por meio de um endpoint de login.
+                Depois, esse token é enviado nas requisições
+                que exigem autenticação.
+            </p>
+
+
+            <!-- =========================
+           BEARER HEADER
+      ========================== -->
+
+            <h3>
+                Header Authorization
+            </h3>
+
+            <p class="concept-description">
+                O token é enviado no header:
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">Authorization: Bearer &lt;token&gt;</span></code></pre>
+
+
+            <p class="concept-description">
+                No cURL:
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -H "Authorization: Bearer &lt;token&gt;" \</span><span class="code-line" data-line="2">https://api.exemplo.com/usuarios</span></code></pre>
+
+
+            <!-- =========================
+           EXPLICAÇÃO
+      ========================== -->
+
+            <h3>
+                Entendendo o Header
+            </h3>
+
+            <p class="concept-description">
+                O header de autenticação possui três elementos
+                importantes:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    <strong>Authorization</strong> — nome do header
+                    utilizado para autenticação.
+                </li>
+
+                <li>
+                    <strong>Bearer</strong> — indica o tipo de
+                    credencial utilizada.
+                </li>
+
+                <li>
+                    <strong>&lt;token&gt;</strong> — representa o
+                    token de acesso fornecido pela API.
+                </li>
+
+            </ul>
+
+
+            <!-- =========================
+           FLUXO DE AUTENTICAÇÃO
+      ========================== -->
+
+            <h3>
+                Fluxo de autenticação
+            </h3>
+
+            <p class="concept-description">
+                De forma simplificada, podemos representar
+                o processo de autenticação da seguinte forma:
+            </p>
+
+
+            <div class="mermaid-wrapper">
+
+                <div class="mermaid">
+
+                    flowchart TD
+
+                    A[Usuário e senha] --> B[Login]
+                    B --> C[API valida credenciais]
+                    C --> D[Token de autenticação]
+                    D --> E[Cliente envia Bearer Token]
+                    E --> F[API valida token]
+                    F --> G[Acesso ao recurso]
+
+                    style A fill:#1976D2,color:#fff
+                    style B fill:#42A5F5,color:#fff
+                    style C fill:#90CAF9,color:#000
+                    style D fill:#FFF176,color:#000
+                    style E fill:#64B5F6,color:#000
+                    style F fill:#90CAF9,color:#000
+                    style G fill:#2E7D32,color:#fff
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+           COMPARAÇÃO
+      ========================== -->
+
+            <h3>
+                Basic vs Bearer Token
+            </h3>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Autenticação
+                            </th>
+
+                            <th>
+                                Utilização
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <code>Basic</code>
+                            </td>
+
+                            <td>
+                                Utiliza usuário e senha por meio
+                                do header Authorization.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <code>Bearer</code>
+                            </td>
+
+                            <td>
+                                Utiliza um token de acesso enviado
+                                no header Authorization.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- =========================
+           SERVEREST
+      ========================== -->
+
+            <h3>
+                Exemplo com o ServeRest
+            </h3>
+
+            <p class="concept-description">
+                No ServeRest, podemos realizar o login enviando
+                as credenciais para o endpoint de autenticação.
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST https://serverest.dev/login \</span><span class="code-line" data-line="2">-H "Content-Type: application/json" \</span><span class="code-line" data-line="3">-d '{</span><span class="code-line" data-line="4">    "email": "hordoqa@email.com",</span><span class="code-line" data-line="5">    "password": "1q2w3e4r"</span><span class="code-line" data-line="6">}'</span></code></pre>
+
+
+            <p class="concept-description">
+                Se as credenciais forem válidas, a API retorna
+                um token que poderá ser utilizado em requisições
+                que exigem autenticação.
+            </p>
+
+
+            <!-- =========================
+           TOKEN
+      ========================== -->
+
+            <h3>
+                Enviando o token
+            </h3>
+
+            <p class="concept-description">
+                Depois de obter o token, podemos enviá-lo
+                utilizando o header <code>Authorization</code>.
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X GET https://serverest.dev/usuarios \</span><span class="code-line" data-line="2">-H "Authorization: Bearer &lt;token&gt;"</span></code></pre>
+
+
+            <p class="concept-description">
+                Substitua <strong>&lt;token&gt;</strong> pelo token
+                retornado pela API.
+            </p>
+
+
+            <!-- =========================
+           EXEMPLO COMPLETO
+      ========================== -->
+
+            <h3>
+                Exemplo completo de requisição
+            </h3>
+
+            <p class="concept-description">
+                Podemos combinar vários conceitos aprendidos:
+                <strong>POST</strong>, <strong>JSON</strong>,
+                <strong>headers</strong> e autenticação com
+                <strong>Bearer Token</strong>.
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST https://serverest.dev/produtos \</span><span class="code-line" data-line="2">-H "Content-Type: application/json" \</span><span class="code-line" data-line="3">-H "Authorization: Bearer &lt;token&gt;" \</span><span class="code-line" data-line="4">-d '{</span><span class="code-line" data-line="5">    "nome": "Produto de teste",</span><span class="code-line" data-line="6">    "preco": 100,</span><span class="code-line" data-line="7">    "descricao": "Produto criado utilizando cURL",</span><span class="code-line" data-line="8">    "quantidade": 10</span><span class="code-line" data-line="9">}'</span></code></pre>
+
+
+            <!-- =========================
+           EXPLICAÇÃO DO COMANDO
+      ========================== -->
+
+            <h3>
+                Entendendo o comando
+            </h3>
+
+
+            <ol>
+
+                <li>
+                    <strong>-X POST</strong> — define o método HTTP
+                    como <strong>POST</strong>.
+                </li>
+
+                <li>
+                    <strong>Content-Type: application/json</strong>
+                    — informa que os dados enviados estão no
+                    formato <strong>JSON</strong>.
+                </li>
+
+                <li>
+                    <strong>Authorization: Bearer &lt;token&gt;</strong>
+                    — envia o token utilizado para autenticação.
+                </li>
+
+                <li>
+                    <strong>-d '{...}'</strong> — define o
+                    <strong>body da requisição</strong>, contendo
+                    os dados do produto.
+                </li>
+
+                <li>
+                    <strong>https://serverest.dev/produtos</strong>
+                    — é o endpoint utilizado para criar o produto.
+                </li>
+
+            </ol>
+
+
+            <!-- =========================
+           FLUXO COMPLETO
+      ========================== -->
+
+            <h3>
+                Fluxo completo
+            </h3>
+
+            <div class="mermaid-wrapper">
+
+                <div class="mermaid">
+
+                    flowchart TD
+
+                    A[Login] --> B[Enviar credenciais]
+                    B --> C{Credenciais válidas?}
+
+                    C -->|SIM| D[API retorna token]
+                    C -->|NÃO| E[Acesso negado]
+
+                    D --> F[Armazenar token]
+                    F --> G[Enviar Authorization: Bearer]
+                    G --> H[Requisição protegida]
+                    H --> I[API valida token]
+                    I --> J[Acesso ao recurso]
+
+                    style A fill:#1976D2,color:#fff
+                    style B fill:#42A5F5,color:#fff
+                    style C fill:#FFF176,color:#000
+                    style D fill:#2E7D32,color:#fff
+                    style E fill:#C62828,color:#fff
+                    style F fill:#90CAF9,color:#000
+                    style G fill:#64B5F6,color:#000
+                    style H fill:#42A5F5,color:#fff
+                    style I fill:#90CAF9,color:#000
+                    style J fill:#2E7D32,color:#fff
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+           RESUMO
+      ========================== -->
+
+            <h3>
+                Resumindo
+            </h3>
+
+            <p class="concept-description">
+                Em uma API que utiliza autenticação,
+                o processo normalmente consiste em:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Realizar o login.
+                </li>
+
+                <li>
+                    Enviar as credenciais para a API.
+                </li>
+
+                <li>
+                    Obter o token de autenticação.
+                </li>
+
+                <li>
+                    Enviar o token no header
+                    <code>Authorization</code>.
+                </li>
+
+                <li>
+                    Acessar os endpoints protegidos.
+                </li>
+
+            </ul>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">Login</span><span class="code-line" data-line="2">↓</span><span class="code-line" data-line="3">Token</span><span class="code-line" data-line="4">↓</span><span class="code-line" data-line="5">Authorization: Bearer &lt;token&gt;</span><span class="code-line" data-line="6">↓</span><span class="code-line" data-line="7">Endpoint protegido</span></code></pre>
+
+
+            <!-- =========================
+           QA NOTE
+      ========================== -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    QA Note
+                </span>
+
+                <p>
+                    Em testes de API, é comum separar o processo
+                    de autenticação do teste do endpoint protegido.
+                    Primeiro obtemos o token e, em seguida,
+                    utilizamos esse token no header
+                    <strong>Authorization</strong> das requisições
+                    que exigem autenticação.
+                </p>
+
+            </div>
+
+
+        </article>
+
+
+        <!-- =========================
+         FOOTER
+    ========================= -->
+
+        <footer>
+
+            <div class="footer-brand">
+                Hora do QA
+            </div>
+
+
+            <div class="footer-meta">
+
+                <span>
+                    CURL / REF-009
+                </span>
+
+                <span>
+                    QUALITY NOTES
+                </span>
+
+                <span class="footer-pass">
+                    READY
+                </span>
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =========================
+       MERMAID
+  ========================= -->
+
+    <script type="module">
+
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: "dark",
+            securityLevel: "loose"
+        });
+
+    </script>
+
+</body>
+
+</html>

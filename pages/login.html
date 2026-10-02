@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>cURL — Login com ServeRest</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <main class="page">
+
+
+        <!-- =========================
+         HEADER
+    ========================= -->
+
+        <header>
+
+            <div class="logo">
+
+                <img src="logo.png" alt="Logo Hora do QA">
+
+            </div>
+
+
+            <div class="brand">
+
+                <span class="eyebrow">
+                    Software Quality / API
+                </span>
+
+                <span class="brand-name">
+                    Hora do QA
+                </span>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    CURL / AUTHENTICATION
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+         HERO
+    ========================= -->
+
+        <section class="hero">
+
+            <div class="hero-label">
+                cURL / ServeRest
+            </div>
+
+
+            <h1>
+                Login com<br>
+                ServeRest
+            </h1>
+
+
+            <p class="hero-description">
+                Como realizar a autenticação de um usuário utilizando
+                o endpoint <strong>/login</strong>, enviar credenciais
+                com o cURL e utilizar o token retornado em requisições
+                que exigem autenticação.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+         CONCEPT
+    ========================= -->
+
+        <article class="concept">
+
+
+            <div class="concept-top">
+
+                <span class="concept-number">
+                    CONCEITO / 08
+                </span>
+
+                <span class="concept-status">
+                    HTTP / AUTH
+                </span>
+
+            </div>
+
+
+            <h2>
+                Autenticação com ServeRest
+            </h2>
+
+
+            <div class="concept-subtitle">
+                cURL / Login / Bearer Token
+            </div>
+
+
+            <!-- =========================
+           CONCEITO
+      ========================= -->
+
+            <h3>
+                Realizando o Login
+            </h3>
+
+
+            <p class="concept-description">
+                No ServeRest, podemos realizar a
+                <strong>autenticação de um usuário</strong>
+                por meio do endpoint <strong>/login</strong>.
+            </p>
+
+
+            <p class="concept-description">
+                Para isso, utilizamos uma requisição
+                <strong>POST</strong>, enviando o e-mail e a senha
+                do usuário no corpo da requisição em formato
+                <strong>JSON</strong>.
+            </p>
+
+
+            <!-- =========================
+           REQUISIÇÃO
+      ========================= -->
+
+            <h3>
+                Requisição
+            </h3>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST https://serverest.dev/login \</span><span class="code-line" data-line="2"> -H "Content-Type: application/json" \</span><span class="code-line" data-line="3"> -d '{</span><span class="code-line" data-line="4">     "email": "hordoqa@email.com",</span><span class="code-line" data-line="5">     "password": "1q2w3e4r"</span><span class="code-line" data-line="6"> }'</span></code></pre>
+
+
+            <!-- =========================
+           ENTENDENDO
+      ========================= -->
+
+            <h3>
+                Entendendo a Requisição
+            </h3>
+
+
+            <p class="concept-description">
+                O comando utiliza algumas opções importantes
+                do cURL para construir a requisição HTTP.
+            </p>
+
+
+            <ul>
+
+                <li>
+                    <code>-X POST</code> define o método HTTP como
+                    <strong>POST</strong>.
+                </li>
+
+                <li>
+                    <code>https://serverest.dev/login</code> é o endpoint
+                    responsável pelo processo de login.
+                </li>
+
+                <li>
+                    <code>Content-Type: application/json</code> informa
+                    ao servidor que os dados enviados estão no formato JSON.
+                </li>
+
+                <li>
+                    <code>-d '{...}'</code> define o corpo da requisição
+                    contendo as credenciais do usuário.
+                </li>
+
+            </ul>
+
+
+            <!-- =========================
+           JSON
+      ========================= -->
+
+            <h3>
+                Corpo da Requisição
+            </h3>
+
+
+            <p class="concept-description">
+                O corpo enviado para o endpoint de login contém
+                o <strong>e-mail</strong> e a <strong>senha</strong>
+                utilizados na autenticação.
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">    "email": "hordoqa@email.com",</span><span class="code-line" data-line="3">    "password": "1q2w3e4r"</span><span class="code-line" data-line="4">}</span></code></pre>
+
+
+            <p class="concept-description">
+                O servidor utiliza essas informações para
+                <strong>validar as credenciais do usuário</strong>.
+            </p>
+
+
+            <!-- =========================
+           RESPOSTA
+      ========================= -->
+
+            <h3>
+                Resposta de Sucesso
+            </h3>
+
+
+            <p class="concept-description">
+                Quando o e-mail e a senha estão corretos,
+                o ServeRest retorna uma resposta contendo
+                uma mensagem de sucesso e um
+                <strong>token de autenticação</strong>.
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">    "message": "Login realizado com sucesso",</span><span class="code-line" data-line="3">    "authorization": "Bearer eyJhbGciOiJIUzI1NiIs..."</span><span class="code-line" data-line="4">}</span></code></pre>
+
+
+            <!-- =========================
+           TOKEN
+      ========================= -->
+
+            <h3>
+                Token de Autenticação
+            </h3>
+
+
+            <p class="concept-description">
+                O campo <strong>authorization</strong> contém o token
+                que poderá ser utilizado posteriormente para acessar
+                endpoints que exigem autenticação.
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">"authorization": "Bearer eyJhbGciOiJIUzI1NiIs..."</span></code></pre>
+
+
+            <p class="concept-description">
+                O prefixo <strong>Bearer</strong> indica que estamos
+                utilizando um token do tipo Bearer para autenticar
+                a requisição.
+            </p>
+
+
+            <!-- =========================
+           REQUISIÇÃO AUTENTICADA
+      ========================= -->
+
+            <h3>
+                Utilizando o Token
+            </h3>
+
+
+            <p class="concept-description">
+                Depois de realizar o login, podemos utilizar o token
+                retornado pelo servidor no header
+                <strong>Authorization</strong>.
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X GET https://serverest.dev/usuarios \</span><span class="code-line" data-line="2"> -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIs..."</span></code></pre>
+
+
+            <p class="concept-description">
+                Nesse caso, o token é enviado junto com a requisição
+                para que o servidor possa identificar e autenticar
+                o cliente.
+            </p>
+
+
+            <!-- =========================
+           HEADER AUTHORIZATION
+      ========================= -->
+
+            <h3>
+                Header Authorization
+            </h3>
+
+
+            <p class="concept-description">
+                A autenticação é realizada por meio do header
+                <strong>Authorization</strong>, que recebe o tipo
+                de autenticação e o token.
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">Authorization: Bearer &lt;TOKEN&gt;</span></code></pre>
+
+
+            <p class="concept-description">
+                Na prática, podemos representar o fluxo da seguinte
+                maneira:
+            </p>
+
+
+            <!-- =========================
+           FLUXO MERMAID
+      ========================= -->
+
+            <div class="mermaid-wrapper">
+
+                <div class="mermaid">
+
+                    flowchart TD
+
+                    A[LOGIN] --> B[POST /login]
+
+                    B --> C[Credenciais]
+
+                    C --> D{Credenciais válidas?}
+
+                    D -->|SIM| E[Token de autenticação]
+                    D -->|NÃO| F[Login recusado]
+
+                    E --> G[Authorization: Bearer TOKEN]
+
+                    G --> H[Requisição protegida]
+
+                    H --> I[GET /usuarios]
+
+                    style A fill:#1976D2,color:#fff,stroke:#1976D2
+                    style B fill:#42A5F5,color:#fff,stroke:#42A5F5
+                    style C fill:#90CAF9,color:#000,stroke:#90CAF9
+                    style D fill:#FFF176,color:#000,stroke:#FBC02D
+                    style E fill:#2E7D32,color:#fff,stroke:#2E7D32
+                    style F fill:#C62828,color:#fff,stroke:#C62828
+                    style G fill:#64B5F6,color:#000,stroke:#64B5F6
+                    style H fill:#42A5F5,color:#fff,stroke:#42A5F5
+                    style I fill:#1976D2,color:#fff,stroke:#1976D2
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+           FLUXO
+      ========================= -->
+
+            <h3>
+                Fluxo de Autenticação
+            </h3>
+
+
+            <p class="concept-description">
+                O processo de autenticação pode ser dividido
+                em três etapas principais:
+            </p>
+
+
+            <ul>
+
+                <li>
+                    Realizar o <strong>login</strong> enviando
+                    e-mail e senha.
+                </li>
+
+                <li>
+                    Receber o <strong>token de autenticação</strong>
+                    retornado pelo servidor.
+                </li>
+
+                <li>
+                    Enviar o token no header
+                    <code>Authorization</code> das requisições
+                    protegidas.
+                </li>
+
+            </ul>
+
+
+            <!-- =========================
+           COMPARAÇÃO
+      ========================= -->
+
+            <h3>
+                Login vs Requisição Autenticada
+            </h3>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Etapa
+                            </th>
+
+                            <th>
+                                Requisição
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Login
+                            </td>
+
+                            <td>
+                                <code>POST /login</code>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Credenciais
+                            </td>
+
+                            <td>
+                                E-mail e senha no corpo JSON.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Resposta
+                            </td>
+
+                            <td>
+                                Token de autenticação.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Autenticação
+                            </td>
+
+                            <td>
+                                <code>Authorization: Bearer TOKEN</code>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Endpoint protegido
+                            </td>
+
+                            <td>
+                                <code>GET /usuarios</code>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- =========================
+           EXEMPLO COMPLETO
+      ========================= -->
+
+            <h3>
+                Exemplo Completo
+            </h3>
+
+
+            <p class="concept-description">
+                Podemos executar o login e utilizar o token
+                retornado em uma segunda requisição.
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST https://serverest.dev/login \</span><span class="code-line" data-line="2"> -H "Content-Type: application/json" \</span><span class="code-line" data-line="3"> -d '{</span><span class="code-line" data-line="4">     "email": "hordoqa@email.com",</span><span class="code-line" data-line="5">     "password": "1q2w3e4r"</span><span class="code-line" data-line="6"> }'</span></code></pre>
+
+
+            <p class="concept-description">
+                Após obter o token, ele pode ser enviado
+                na próxima requisição:
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X GET https://serverest.dev/usuarios \</span><span class="code-line" data-line="2"> -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIs..."</span></code></pre>
+
+
+            <!-- =========================
+           RESUMO
+      ========================= -->
+
+            <h3>
+                Resumindo
+            </h3>
+
+
+            <p class="concept-description">
+                O processo de autenticação com o ServeRest
+                utiliza uma sequência simples:
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">POST /login</span><span class="code-line" data-line="2">      ↓</span><span class="code-line" data-line="3">Credenciais</span><span class="code-line" data-line="4">      ↓</span><span class="code-line" data-line="5">Token</span><span class="code-line" data-line="6">      ↓</span><span class="code-line" data-line="7">Authorization: Bearer TOKEN</span><span class="code-line" data-line="8">      ↓</span><span class="code-line" data-line="9">Endpoint protegido</span></code></pre>
+
+
+            <!-- =========================
+           QA NOTE
+      ========================= -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    QA Note
+                </span>
+
+                <p>
+                    Em testes de API, o fluxo de autenticação normalmente
+                    começa pelo <strong>login</strong>. A resposta fornece
+                    um <strong>token</strong>, que deve ser armazenado e
+                    enviado posteriormente no header
+                    <strong>Authorization</strong> das requisições que
+                    exigem autenticação.
+                </p>
+
+            </div>
+
+
+        </article>
+
+
+        <!-- =========================
+         FOOTER
+    ========================= -->
+
+        <footer>
+
+            <div class="footer-brand">
+                Hora do QA
+            </div>
+
+
+            <div class="footer-meta">
+
+                <span>
+                    CURL / REF-008
+                </span>
+
+                <span>
+                    AUTHENTICATION
+                </span>
+
+                <span class="footer-pass">
+                    READY
+                </span>
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =========================
+       MERMAID
+  ========================= -->
+
+    <script type="module">
+
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: "dark",
+            securityLevel: "loose"
+        });
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1316 @@
+:root {
+  --verde-profundo: #0F3D2E;
+  --verde-musgo: #3F6F52;
+  --verde-sinal: #8FE3B0;
+  --dourado: #C99A44;
+  --marfim: #F3EFE6;
+  --tinta: #12201A;
+  --branco: #ffffff;
+
+  --codigo: #102D23;
+  --codigo-texto: #D9F3E3;
+
+  --borda: rgba(15, 61, 46, 0.16);
+
+  --radius: 18px;
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  background: var(--marfim);
+  color: var(--tinta);
+
+  font-family: "Manrope", sans-serif;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 42px 24px;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.page {
+  width: 100%;
+  max-width: 1180px;
+
+  min-height: calc(100vh - 84px);
+
+  background: var(--marfim);
+
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: 92px 1fr auto;
+
+  align-items: center;
+
+  gap: 28px;
+
+  padding: 12px 0 42px;
+
+  border-bottom: 1px solid var(--borda);
+}
+
+.logo {
+  width: 78px;
+  height: 78px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 78px;
+  height: 78px;
+
+  object-fit: contain;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.eyebrow {
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  color: var(--verde-musgo);
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.brand-name {
+  font-family: "Newsreader", serif;
+
+  font-size: 25px;
+  font-style: italic;
+
+  color: var(--verde-profundo);
+}
+
+.status {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 11px;
+
+  color: var(--verde-profundo);
+
+  white-space: nowrap;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+
+  background: var(--verde-sinal);
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 4px rgba(143, 227, 176, 0.18);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+  z-index: 1;
+
+  padding: 64px 0 48px;
+
+  max-width: 900px;
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 10px;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  color: var(--verde-musgo);
+
+  margin-bottom: 18px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-label::before {
+  content: "Conceitos";
+
+  color: var(--marfim);
+
+  background: var(--verde-profundo);
+
+  padding: 5px 8px;
+
+  border-radius: 5px;
+
+  font-size: 10px;
+}
+
+h1 {
+  color: var(--verde-profundo);
+
+  font-family: "Newsreader", serif;
+
+  font-size: clamp(54px, 7vw, 86px);
+
+  font-weight: 500;
+  font-style: italic;
+
+  line-height: 0.95;
+
+  letter-spacing: -0.045em;
+}
+
+.hero-description {
+  margin-top: 24px;
+
+  max-width: 800px;
+
+  font-size: 16px;
+
+  line-height: 1.7;
+
+  color: rgba(18, 32, 26, 0.72);
+}
+
+
+/* =========================
+   CONCEPT
+========================= */
+
+.concept {
+  width: 100%;
+
+  background: var(--verde-profundo);
+
+  border: 1px solid var(--verde-profundo);
+
+  border-radius: var(--radius);
+
+  padding: 32px;
+
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.concept:hover {
+  background: #124A38;
+
+  border-color: var(--verde-musgo);
+}
+
+
+/* =========================
+   CONCEPT TOP
+========================= */
+
+.concept-top {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 20px;
+
+  margin-bottom: 28px;
+}
+
+.concept-number {
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  color: var(--verde-sinal);
+
+  letter-spacing: 0.05em;
+
+  text-transform: uppercase;
+}
+
+.concept-status {
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 9px;
+
+  color: var(--verde-sinal);
+
+  border: 1px solid rgba(143, 227, 176, 0.35);
+
+  padding: 5px 7px;
+
+  border-radius: 4px;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+
+/* =========================
+   CONCEPT TITLE
+========================= */
+
+.concept h2 {
+  color: var(--marfim);
+
+  font-family: "Newsreader", serif;
+
+  font-size: 36px;
+
+  font-weight: 500;
+
+  line-height: 1;
+
+  margin-bottom: 14px;
+}
+
+.concept-subtitle {
+  display: block;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  color: var(--verde-sinal);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.06em;
+
+  margin-top: 26px;
+  margin-bottom: 14px;
+}
+
+
+/* =========================
+   CONCEPT HEADINGS
+========================= */
+
+.concept h3 {
+  color: var(--marfim);
+
+  font-family: "Newsreader", serif;
+
+  font-size: 24px;
+
+  font-weight: 500;
+
+  line-height: 1.2;
+
+  margin-top: 30px;
+  margin-bottom: 14px;
+}
+
+.concept h3:first-of-type {
+  margin-top: 0;
+}
+
+
+/* =========================
+   CONCEPT DESCRIPTION
+========================= */
+
+.concept-description {
+  color: rgba(243, 239, 230, 0.72);
+
+  font-size: 13px;
+
+  line-height: 1.7;
+
+  margin-bottom: 14px;
+
+  max-width: 900px;
+}
+
+.concept-description strong {
+  color: var(--verde-sinal);
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 11px;
+
+  font-weight: 500;
+}
+
+
+/* =========================
+   CODE
+========================= */
+
+.concept pre.concept-code {
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 20px;
+
+  padding: 20px;
+
+  background: var(--codigo);
+
+  border: 1px solid rgba(143, 227, 176, 0.13);
+
+  border-radius: 10px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  color: var(--codigo-texto);
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+
+  text-align: left;
+
+  white-space: pre;
+
+  tab-size: 2;
+
+  -moz-tab-size: 2;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.concept pre.concept-code code {
+  display: block;
+
+  width: max-content;
+
+  min-width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+
+  border: 0;
+
+  color: var(--codigo-texto);
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+
+  text-align: left;
+
+  white-space: pre;
+
+  word-break: normal;
+
+  overflow-wrap: normal;
+}
+
+
+/* =========================
+   CODE SELECTION
+========================= */
+
+.concept pre.concept-code code::selection {
+  background: rgba(143, 227, 176, 0.25);
+
+  color: var(--branco);
+}
+
+
+/* =========================
+   INLINE CODE
+========================= */
+
+.concept p code,
+.concept .note code {
+  color: var(--verde-sinal);
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 11px;
+
+  font-weight: 500;
+}
+
+
+/* =========================
+   NOTE
+========================= */
+
+.note {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 14px;
+
+  margin-top: 24px;
+
+  padding: 16px 18px;
+
+  background: rgba(143, 227, 176, 0.07);
+
+  border-left: 3px solid var(--verde-sinal);
+
+  border-radius: 0 8px 8px 0;
+}
+
+.note-label {
+  flex-shrink: 0;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  color: var(--verde-sinal);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.05em;
+}
+
+.note p {
+  color: rgba(243, 239, 230, 0.72);
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+.note strong {
+  color: var(--verde-sinal);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  position: relative;
+  z-index: 1;
+
+  margin-top: 38px;
+
+  padding: 22px 0 5px;
+
+  border-top: 1px solid var(--borda);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.footer-brand {
+  font-family: "Newsreader", serif;
+
+  font-size: 21px;
+
+  font-style: italic;
+
+  color: var(--verde-profundo);
+}
+
+.footer-meta {
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 10px;
+
+  color: var(--verde-musgo);
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.08em;
+}
+
+.footer-pass {
+  color: var(--verde-profundo);
+
+  background: var(--verde-sinal);
+
+  padding: 7px 10px;
+
+  border-radius: 4px;
+
+  font-weight: 700;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 760px) {
+
+  body {
+    padding: 24px 16px;
+  }
+
+  .page {
+    min-height: calc(100vh - 48px);
+  }
+
+  header {
+    grid-template-columns: 70px 1fr;
+
+    gap: 18px;
+  }
+
+  .logo {
+    width: 62px;
+    height: 62px;
+  }
+
+  .logo img {
+    width: 62px;
+    height: 62px;
+  }
+
+  .status {
+    grid-column: 2;
+
+    margin-top: -8px;
+  }
+
+  .hero {
+    padding: 48px 0 36px;
+  }
+
+  h1 {
+    font-size: clamp(48px, 14vw, 70px);
+  }
+
+  .concept {
+    padding: 22px;
+  }
+
+  .concept h2 {
+    font-size: 31px;
+  }
+
+  .concept h3 {
+    font-size: 22px;
+  }
+
+  .concept-top {
+    gap: 12px;
+  }
+
+  .concept-status {
+    font-size: 8px;
+  }
+
+  .concept pre.concept-code {
+    padding: 16px;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+  }
+
+  .concept pre.concept-code code {
+    font-size: 11px;
+
+    line-height: 1.7;
+  }
+
+  .note {
+    flex-direction: column;
+
+    gap: 7px;
+  }
+
+  footer {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .footer-meta {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .concept {
+    transition: none;
+  }
+}
+
+
+/* =========================
+   PRINT
+========================= */
+
+@media print {
+
+  body {
+    padding: 0;
+
+    background: white;
+  }
+
+  .page {
+    max-width: none;
+
+    min-height: auto;
+  }
+
+  .concept {
+    break-inside: avoid;
+  }
+
+  .concept:hover {
+    background: var(--verde-profundo);
+
+    border-color: var(--verde-profundo);
+  }
+
+  .concept pre.concept-code {
+    white-space: pre-wrap;
+
+    overflow: visible;
+
+    font-size: 10px;
+  }
+}
+
+
+/* =========================
+TABELA DE ASSERTIONS
+========================= */
+
+.table-wrapper {
+width: 100%;
+overflow-x: auto;
+margin: 2rem 0;
+border: 1px solid var(--border-color, #2a2a2a);
+border-radius: 8px;
+background: var(--surface-color, #111111);
+}
+
+.table-wrapper table {
+width: 100%;
+border-collapse: collapse;
+font-family: 'Manrope', sans-serif;
+}
+
+.table-wrapper thead {
+background: #181818;
+}
+
+.table-wrapper th {
+padding: 1rem 1.25rem;
+text-align: left;
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: #ffffff;
+border-bottom: 1px solid #2a2a2a;
+}
+
+.table-wrapper td {
+padding: 1rem 1.25rem;
+font-size: 0.9rem;
+line-height: 1.5;
+color: #c7c7c7;
+border-bottom: 1px solid #242424;
+vertical-align: top;
+}
+
+.table-wrapper tbody tr:last-child td {
+border-bottom: none;
+}
+
+.table-wrapper tbody tr {
+transition: background-color 0.2s ease;
+}
+
+.table-wrapper tbody tr:hover {
+background: #181818;
+}
+
+.table-wrapper td:first-child {
+width: 30%;
+color: #ffffff;
+font-family: 'JetBrains Mono', monospace;
+font-weight: 500;
+}
+
+.table-wrapper td:first-child code {
+color: #d7a86e;
+font-family: 'JetBrains Mono', monospace;
+font-size: 0.85rem;
+}
+
+@media (max-width: 700px) {
+
+.table-wrapper {
+    border-radius: 6px;
+}
+
+.table-wrapper th,
+.table-wrapper td {
+    padding: 0.8rem;
+}
+
+.table-wrapper th {
+    font-size: 0.7rem;
+}
+
+.table-wrapper td {
+    font-size: 0.82rem;
+}
+
+.table-wrapper td:first-child {
+    width: auto;
+}
+
+
+}
+
+/* =========================
+   CODE — ESTILO VS CODE
+========================= */
+
+.concept pre.concept-code {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+
+  margin: 0 0 20px;
+
+  padding: 20px 0;
+
+  background: var(--codigo);
+
+  border: 1px solid rgba(143, 227, 176, 0.13);
+
+  border-radius: 10px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  color: var(--codigo-texto);
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+
+  text-align: left;
+
+  white-space: pre;
+
+  tab-size: 2;
+
+  -moz-tab-size: 2;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* =========================
+   ÁREA DO CÓDIGO
+========================= */
+
+.concept pre.concept-code code {
+  display: block;
+
+  width: max-content;
+
+  min-width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+
+  border: 0;
+
+  color: var(--codigo-texto);
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 12px;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+
+  text-align: left;
+
+  white-space: pre;
+
+  word-break: normal;
+
+  overflow-wrap: normal;
+}
+
+
+/* =========================
+   LINHAS DO CÓDIGO
+========================= */
+
+.concept-code .code-line {
+  display: block;
+
+  position: relative;
+
+  min-height: 21px;
+
+  padding-left: 70px;
+
+  padding-right: 20px;
+}
+
+
+/* =========================
+   NÚMERO DA LINHA
+========================= */
+
+.concept-code .code-line::before {
+
+  content: attr(data-line);
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 54px;
+
+  padding-right: 14px;
+
+  text-align: right;
+
+  color: rgba(243, 239, 230, 0.32);
+
+  font-family: "JetBrains Mono", monospace;
+
+  font-size: 11px;
+
+  line-height: inherit;
+
+  border-right: 1px solid rgba(143, 227, 176, 0.10);
+
+  user-select: none;
+
+  pointer-events: none;
+}
+
+
+/* =========================
+   HOVER NA LINHA
+========================= */
+
+.concept-code .code-line:hover {
+  background: rgba(143, 227, 176, 0.035);
+}
+
+.concept-code .code-line:hover::before {
+  color: rgba(143, 227, 176, 0.70);
+}
+
+
+/* =========================
+   SELEÇÃO
+========================= */
+
+.concept pre.concept-code code::selection,
+.concept pre.concept-code .code-line::selection {
+  background: rgba(143, 227, 176, 0.25);
+
+  color: var(--branco);
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+.concept-code::-webkit-scrollbar {
+  height: 9px;
+}
+
+.concept-code::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.15);
+
+  border-radius: 0 0 10px 10px;
+}
+
+.concept-code::-webkit-scrollbar-thumb {
+  background: rgba(143, 227, 176, 0.25);
+
+  border-radius: 10px;
+}
+
+.concept-code::-webkit-scrollbar-thumb:hover {
+  background: rgba(143, 227, 176, 0.40);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 760px) {
+
+  .concept pre.concept-code {
+    padding: 16px 0;
+
+    font-size: 11px;
+
+    line-height: 1.7;
+  }
+
+  .concept pre.concept-code code {
+    font-size: 11px;
+
+    line-height: 1.7;
+  }
+
+  .concept-code .code-line {
+    padding-left: 58px;
+    padding-right: 16px;
+  }
+
+  .concept-code .code-line::before {
+    width: 44px;
+
+    padding-right: 10px;
+
+    font-size: 10px;
+  }
+
+}
+
+/* =========================
+   MERMAID
+========================= */
+
+.mermaid-wrapper {
+  width: 100%;
+
+  margin: 0 0 20px;
+
+  padding: 30px 20px;
+
+  background: var(--codigo);
+
+  border: 1px solid rgba(143, 227, 176, 0.13);
+
+  border-radius: 10px;
+
+  overflow-x: auto;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.mermaid {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+
+  color: var(--codigo-texto);
+
+  font-family: "Manrope", sans-serif;
+}
+
+
+/* =========================
+   MERMAID TEXT
+========================= */
+
+.mermaid .nodeLabel {
+  font-family: "Manrope", sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+.mermaid foreignObject {
+  overflow: visible;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 760px) {
+
+  .mermaid-wrapper {
+    padding: 20px 10px;
+
+    justify-content: flex-start;
+  }
+
+  .mermaid {
+    min-width: 700px;
+  }
+
+}
+
+
+.concept ul {
+  margin: 24px 0 32px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.concept ul li {
+  position: relative;
+  margin-bottom: 14px;
+  padding-left: 28px;
+
+  font-family: "Manrope", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #b8c0cc;
+}
+
+.concept ul li::before {
+  content: "→";
+
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  color: #42a5f5;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 600;
+}
+
+.concept ul li code {
+  padding: 3px 7px;
+
+  border: 1px solid rgba(66, 165, 245, 0.2);
+  border-radius: 4px;
+
+  background: rgba(66, 165, 245, 0.08);
+
+  color: #90caf9;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9em;
+}
+
+
+/* =========================
+   LISTAS
+========================= */
+
+.concept ul,
+.concept ol {
+  margin: 24px 0 32px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.concept ul li,
+.concept ol li {
+  position: relative;
+
+  margin: 0;
+  padding: 12px 16px 12px 32px;
+
+  color: #b8c0cc;
+
+  font-family: "Manrope", sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.concept ul li:last-child,
+.concept ol li:last-child {
+  border-bottom: none;
+}
+
+
+/* =========================
+   MARCADOR DO UL
+========================= */
+
+.concept ul li::before {
+  content: "→";
+
+  position: absolute;
+  left: 0;
+  top: 12px;
+
+  color: #42a5f5;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+
+/* =========================
+   NÚMERO DO OL
+========================= */
+
+.concept ol {
+  counter-reset: concept-list;
+}
+
+.concept ol li {
+  counter-increment: concept-list;
+  padding-left: 42px;
+}
+
+.concept ol li::before {
+  content: counter(concept-list, decimal-leading-zero);
+
+  position: absolute;
+  left: 0;
+  top: 12px;
+
+  color: #42a5f5;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* =========================
+   DESTAQUES DENTRO DA LISTA
+========================= */
+
+.concept li strong {
+  color: #f5f7fa;
+  font-weight: 600;
+}
+
+.concept li code {
+  color: #90caf9;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.concept ul li:hover,
+.concept ol li:hover {
+  color: #e5e9ef;
+
+  background: rgba(66, 165, 245, 0.035);
+}
+
+.concept ul li:hover::before,
+.concept ol li:hover::before {
+  color: #64b5f6;
+}

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>cURL — Respostas, Status Code e Downloads</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="page">
+        <!-- =========================
+     HEADER
+========================= -->
+
+        <header>
+
+            <div class="logo">
+
+                <img src="logo.png" alt="Logo">
+
+            </div>
+
+            <div class="brand">
+
+                <span class="eyebrow">
+                    Software Quality / API
+                </span>
+
+                <span class="brand-name">
+                    Hora do QA
+                </span>
+
+            </div>
+
+            <div class="status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    CURL / API TESTING
+                </span>
+
+            </div>
+
+        </header>
+
+        <!-- =========================
+     HERO
+========================= -->
+
+        <section class="hero">
+
+            <div class="hero-label">
+                cURL
+            </div>
+
+            <h1>
+                Respostas,<br>
+                Status Code<br>
+                & Downloads
+            </h1>
+
+            <p class="hero-description">
+                Como salvar respostas em arquivos, capturar Status Codes,
+                validar resultados automaticamente e realizar downloads
+                utilizando o cURL durante testes de API e automação de QA.
+            </p>
+
+        </section>
+
+        <!-- =========================
+     CONCEPT
+========================= -->
+
+        <article class="concept">
+
+            <div class="concept-top">
+
+                <span class="concept-number">
+                    CONCEITO / 07
+                </span>
+
+                <span class="concept-status">
+                    API / AUTOMATION
+                </span>
+
+            </div>
+
+            <h2>
+                Respostas, Status Code e Downloads
+            </h2>
+
+            <div class="concept-subtitle">
+                cURL / Response & Automation
+            </div>
+
+            <!-- =========================
+       INTRODUÇÃO
+  ========================= -->
+
+            <h3>
+                Salvando e validando respostas
+            </h3>
+
+            <p class="concept-description">
+                Durante testes de API, frequentemente precisamos
+                <strong>armazenar a resposta</strong>,
+                <strong>analisar seu conteúdo</strong>,
+                <strong>validar o Status Code</strong>
+                e, em alguns casos,
+                <strong>baixar arquivos</strong>.
+            </p>
+
+            <!-- =========================
+       01 — SALVAR
+  ========================= -->
+
+            <h3>
+                01 · Salvando a resposta
+            </h3>
+
+            <p class="concept-description">
+                Para salvar a resposta de uma requisição em um arquivo,
+                utilizamos a opção <strong>-o</strong>, também conhecida
+                como <strong>--output</strong>.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -o resposta.json https://serverest.dev/usuarios</span></code></pre>
+
+            <p class="concept-description">
+                Nesse comando, o <strong>-o</strong> define o arquivo
+                de saída. O nome <strong>resposta.json</strong> será
+                utilizado para armazenar o corpo retornado pela API.
+            </p>
+
+            <pre class="concept-code"><code><span class="code-line" data-line="1">resposta.json</span></code></pre>
+
+            <!-- =========================
+       02 — VISUALIZAR
+  ========================= -->
+
+            <h3>
+                02 · Visualizando a resposta
+            </h3>
+
+            <p class="concept-description">
+                Depois de salvar a resposta, podemos utilizar o
+                <strong>cat</strong> para visualizar o conteúdo
+                do arquivo.
+            </p>
+
+            <pre class="concept-code"><code><span class="code-line" data-line="1">cat resposta.json</span></code></pre>
+
+            <p class="concept-description">
+                Quando a API retorna JSON, podemos utilizar o
+                <strong>jq</strong> para apresentar o conteúdo
+                de forma mais organizada.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">jq . resposta.json</span><span class="code-line" data-line="2">cat resposta.json | jq .</span></code></pre>
+
+            <!-- =========================
+       03 — POST
+  ========================= -->
+
+            <h3>
+                03 · POST + arquivo
+            </h3>
+
+            <p class="concept-description">
+                A opção <strong>-o</strong> pode ser utilizada com
+                qualquer método HTTP, incluindo requisições POST.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST "https://serverest.dev/usuarios" \</span><span class="code-line" data-line="2">  -H "Content-Type: application/json" \</span><span class="code-line" data-line="3">  -d '{</span><span class="code-line" data-line="4">    "nome": "Hora do QA",</span><span class="code-line" data-line="5">    "email": "horadoqa@example.com",</span><span class="code-line" data-line="6">    "password": "1q2w3e4r",</span><span class="code-line" data-line="7">    "administrador": "false"</span><span class="code-line" data-line="8">  }' \</span><span class="code-line" data-line="9">  -o resposta.json</span></code></pre>
+
+            <p class="concept-description">
+                Depois da execução, a resposta poderá ser analisada
+                utilizando:
+            </p>
+
+            <pre class="concept-code"><code><span class="code-line" data-line="1">jq . resposta.json</span></code></pre>
+
+            <!-- =========================
+       04 — -o VS -O
+  ========================= -->
+
+            <h3>
+                04 · -o vs -O
+            </h3>
+
+            <p class="concept-description">
+                É importante diferenciar as opções <strong>-o</strong>
+                e <strong>-O</strong>.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -o resposta.json https://serverest.dev/usuarios</span><span class="code-line" data-line="2">curl -O https://exemplo.com/relatorio.pdf</span></code></pre>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Opção
+                            </th>
+
+                            <th>
+                                Comportamento
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <code>-o arquivo</code>
+                            </td>
+
+                            <td>
+                                Define o nome do arquivo.
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <code>-O</code>
+                            </td>
+
+                            <td>
+                                Utiliza o nome do arquivo presente na URL.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">-o → eu escolho o nome</span><span class="code-line" data-line="2">-O → a URL define o nome</span></code></pre>
+
+            <!-- =========================
+       05 — STATUS CODE
+  ========================= -->
+
+            <h3>
+                05 · Capturando o Status Code
+            </h3>
+
+            <p class="concept-description">
+                Em testes de API, muitas vezes não basta salvar o corpo
+                da resposta. Também precisamos saber se a requisição foi
+                processada corretamente.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -s \</span><span class="code-line" data-line="2">  -o resposta.json \</span><span class="code-line" data-line="3">  -w "%{http_code}" \</span><span class="code-line" data-line="4">  https://serverest.dev/usuarios</span></code></pre>
+
+            <p class="concept-description">
+                Nesse exemplo:
+            </p>
+
+            <ul>
+
+                <li>
+                    <code>-s</code> executa o cURL em modo silencioso.
+                </li>
+
+                <li>
+                    <code>-o resposta.json</code> salva o corpo da resposta.
+                </li>
+
+                <li>
+                    <code>-w "%{http_code}"</code> exibe o Status Code HTTP.
+                </li>
+
+            </ul>
+
+            <pre class="concept-code"><code><span class="code-line" data-line="1">200</span></code></pre>
+
+            <!-- =========================
+       06 — VARIÁVEL
+  ========================= -->
+
+            <h3>
+                06 · Armazenando o Status Code
+            </h3>
+
+            <p class="concept-description">
+                Em automação, podemos armazenar o Status Code em uma
+                variável para utilizá-lo posteriormente em uma validação.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">STATUS=$(curl -s \</span><span class="code-line" data-line="2">  -o resposta.json \</span><span class="code-line" data-line="3">  -w "%{http_code}" \</span><span class="code-line" data-line="4">  https://serverest.dev/usuarios)</span><span class="code-line" data-line="5"></span><span class="code-line" data-line="6">echo "$STATUS"</span></code></pre>
+
+            <p class="concept-description">
+                Dessa forma, temos duas informações separadas:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">STATUS</span><span class="code-line" data-line="2">↓</span><span class="code-line" data-line="3">200</span><span class="code-line" data-line="4"></span><span class="code-line" data-line="5">resposta.json</span><span class="code-line" data-line="6">↓</span><span class="code-line" data-line="7">Corpo da resposta da API</span></code></pre>
+
+            <!-- =========================
+       07 — VALIDAÇÃO
+  ========================= -->
+
+            <h3>
+                07 · Validando com if
+            </h3>
+
+            <p class="concept-description">
+                O Status Code pode ser utilizado para decidir se o teste
+                deve continuar ou ser interrompido.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">STATUS=$(curl -s \</span><span class="code-line" data-line="2">  -o resposta.json \</span><span class="code-line" data-line="3">  -w "%{http_code}" \</span><span class="code-line" data-line="4">  https://serverest.dev/usuarios)</span><span class="code-line" data-line="5"></span><span class="code-line" data-line="6">if [ "$STATUS" -eq 200 ]; then</span><span class="code-line" data-line="7">  echo "API disponível - Status Code: $STATUS"</span><span class="code-line" data-line="8">  jq . resposta.json</span><span class="code-line" data-line="9">else</span><span class="code-line" data-line="10">  echo "API indisponível - Status Code: $STATUS"</span><span class="code-line" data-line="11">  jq . resposta.json</span><span class="code-line" data-line="12">  exit 1</span><span class="code-line" data-line="13">fi</span></code></pre>
+
+            <p class="concept-description">
+                O fluxo pode ser entendido da seguinte maneira:
+            </p>
+
+            <div class="mermaid-wrapper">
+
+                <div class="mermaid">
+
+                    flowchart TD
+
+                    A[REQUISIÇÃO] --> B[cURL]
+
+                    B --> C[RESPOSTA]
+
+                    C --> D[CORPO<br>resposta.json]
+                    C --> E[STATUS CODE<br>STATUS]
+
+                    D --> F[VALIDAÇÃO]
+                    E --> F
+
+                    F --> G{STATUS = 200?}
+
+                    G -->|PASS| H[CONTINUA]
+                    G -->|FAIL| I[EXIT 1]
+
+                    style A fill:#1976D2,color:#fff,stroke:#1976D2
+                    style B fill:#42A5F5,color:#fff,stroke:#42A5F5
+
+                    style C fill:#90CAF9,color:#000,stroke:#90CAF9
+
+                    style D fill:#64B5F6,color:#000,stroke:#64B5F6
+                    style E fill:#64B5F6,color:#000,stroke:#64B5F6
+
+                    style F fill:#FFF176,color:#000,stroke:#FBC02D
+                    style G fill:#FFF176,color:#000,stroke:#FBC02D
+
+                    style H fill:#2E7D32,color:#fff,stroke:#2E7D32
+                    style I fill:#C62828,color:#fff,stroke:#C62828
+
+                </div>
+
+            </div>
+
+            <!-- =========================
+       08 — DOWNLOAD
+  ========================= -->
+
+            <h3>
+                08 · Baixando arquivos
+            </h3>
+
+            <p class="concept-description">
+                O cURL também pode ser utilizado para baixar arquivos.
+                Com <strong>-O</strong>, o nome do arquivo é obtido
+                diretamente da URL.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -O https://exemplo.com/arquivo.zip</span><span class="code-line" data-line="2">curl -O https://exemplo.com/relatorio.pdf</span></code></pre>
+
+            <p class="concept-description">
+                Podemos também definir um nome personalizado utilizando
+                <strong>-o</strong>.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -o meu-relatorio.pdf https://exemplo.com/relatorio.pdf</span></code></pre>
+
+            <!-- =========================
+       09 — DIRETÓRIOS
+  ========================= -->
+
+            <h3>
+                09 · Baixando para uma pasta
+            </h3>
+
+            <p class="concept-description">
+                Podemos especificar o caminho completo onde o arquivo
+                deverá ser salvo.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">mkdir -p downloads</span><span class="code-line" data-line="2"></span><span class="code-line" data-line="3">curl -o ./downloads/relatorio.pdf \</span><span class="code-line" data-line="4">  https://exemplo.com/relatorio.pdf</span></code></pre>
+
+            <p class="concept-description">
+                Nesse caso, o arquivo será salvo em:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">downloads/relatorio.pdf</span></code></pre>
+
+            <!-- =========================
+       10 — CONTINUAR DOWNLOAD
+  ========================= -->
+
+            <h3>
+                10 · Continuando um download
+            </h3>
+
+            <p class="concept-description">
+                Se um download for interrompido, podemos utilizar
+                <strong>-C -</strong> para tentar continuar a partir
+                do ponto em que parou.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -C - -O https://exemplo.com/arquivo.zip</span></code></pre>
+
+            <!-- =========================
+       11 — AUTOMAÇÃO
+  ========================= -->
+
+            <h3>
+                11 · Exemplo completo de automação
+            </h3>
+
+            <p class="concept-description">
+                Podemos combinar essas funcionalidades em um pequeno
+                teste automatizado utilizando Bash, cURL e jq.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">#!/bin/bash</span><span class="code-line" data-line="2"></span><span class="code-line" data-line="3">URL="https://serverest.dev/usuarios"</span><span class="code-line" data-line="4">ARQUIVO="resposta.json"</span><span class="code-line" data-line="5"></span><span class="code-line" data-line="6">echo "Consultando API..."</span><span class="code-line" data-line="7"></span><span class="code-line" data-line="8">STATUS=$(curl -s \</span><span class="code-line" data-line="9">  -o "$ARQUIVO" \</span><span class="code-line" data-line="10">  -w "%{http_code}" \</span><span class="code-line" data-line="11">  "$URL")</span><span class="code-line" data-line="12"></span><span class="code-line" data-line="13">echo "Status Code: $STATUS"</span><span class="code-line" data-line="14"></span><span class="code-line" data-line="15">if [ "$STATUS" -eq 200 ]; then</span><span class="code-line" data-line="16">  echo "Teste aprovado"</span><span class="code-line" data-line="17">  echo ""</span><span class="code-line" data-line="18">  echo "Resposta da API:"</span><span class="code-line" data-line="19">  jq . "$ARQUIVO"</span><span class="code-line" data-line="20">else</span><span class="code-line" data-line="21">  echo "Teste reprovado"</span><span class="code-line" data-line="22">  echo ""</span><span class="code-line" data-line="23">  echo "Resposta da API:"</span><span class="code-line" data-line="24">  jq . "$ARQUIVO"</span><span class="code-line" data-line="25"></span><span class="code-line" data-line="26">  exit 1</span><span class="code-line" data-line="27">fi</span></code></pre>
+
+            <!-- =========================
+       12 — FLUXO
+  ========================= -->
+
+            <h3>
+                12 · Fluxo de QA
+            </h3>
+
+            <p class="concept-description">
+                O fluxo básico de uma automação utilizando cURL pode
+                ser representado desta forma:
+            </p>
+
+            <div class="mermaid-wrapper">
+
+                <div class="mermaid">
+
+                    flowchart TD
+
+                    A[REQUISIÇÃO] --> B[CURL]
+
+                    B --> C[RESPOSTA]
+
+                    C --> D[JSON]
+                    C --> E[STATUS CODE]
+
+                    D --> F[VALIDAÇÃO]
+                    E --> F
+
+                    F --> G{STATUS CODE = 200?}
+
+                    G -->|SIM| H[PASS<br>CONTINUA]
+                    G -->|NÃO| I[FAIL<br>EXIT 1]
+
+                    style A fill:#1976D2,color:#fff,stroke:#1976D2
+                    style B fill:#42A5F5,color:#fff,stroke:#42A5F5
+                    style C fill:#90CAF9,color:#000,stroke:#90CAF9
+
+                    style D fill:#64B5F6,color:#000,stroke:#64B5F6
+                    style E fill:#64B5F6,color:#000,stroke:#64B5F6
+
+                    style F fill:#FFF176,color:#000,stroke:#FBC02D
+                    style G fill:#FFF176,color:#000,stroke:#FBC02D
+
+                    style H fill:#2E7D32,color:#fff,stroke:#2E7D32
+                    style I fill:#C62828,color:#fff,stroke:#C62828
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+       ASSERTIONS
+  ========================= -->
+
+            <h3>
+                Principais opções utilizadas
+            </h3>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Opção
+                            </th>
+
+                            <th>
+                                Função
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <code>-X</code>
+                            </td>
+
+                            <td>
+                                Define o método HTTP.
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <code>-H</code>
+                            </td>
+
+                            <td>
+                                Adiciona um Header.
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <code>-d</code>
+                            </td>
+
+                            <td>
+                                Envia dados no corpo da requisição.
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <code>-o</code>
+                            </td>
+
+                            <td>
+                                Salva a resposta em um arquivo com nome definido.
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <code>-O</code>
+                            </td>
+
+                            <td>
+                                Salva utilizando o nome do arquivo da URL.
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <code>-s</code>
+                            </td>
+
+                            <td>
+                                Executa o cURL em modo silencioso.
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <code>-w</code>
+                            </td>
+
+                            <td>
+                                Permite formatar informações da resposta.
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <code>%{http_code}</code>
+                            </td>
+
+                            <td>
+                                Obtém o Status Code HTTP.
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                                <code>-C -</code>
+                            </td>
+
+                            <td>
+                                Continua um download interrompido.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <!-- =========================
+       CONCLUSÃO
+  ========================= -->
+
+            <h3>
+                cURL além da requisição
+            </h3>
+
+            <p class="concept-description">
+                O cURL vai muito além de simplesmente fazer uma
+                requisição HTTP. Em automação de testes, podemos
+                utilizá-lo para trabalhar com respostas, Status Codes,
+                arquivos e validações.
+            </p>
+
+            <ul>
+
+                <li>
+                    Realizar requisições HTTP.
+                </li>
+
+                <li>
+                    Enviar Headers e payloads.
+                </li>
+
+                <li>
+                    Salvar respostas em arquivos.
+                </li>
+
+                <li>
+                    Analisar JSON com <code>jq</code>.
+                </li>
+
+                <li>
+                    Capturar Status Codes.
+                </li>
+
+                <li>
+                    Validar condições com <code>if</code>.
+                </li>
+
+                <li>
+                    Interromper testes com <code>exit 1</code>.
+                </li>
+
+                <li>
+                    Baixar arquivos.
+                </li>
+
+                <li>
+                    Continuar downloads interrompidos.
+                </li>
+
+                <li>
+                    Gerar evidências para análise dos testes.
+                </li>
+
+            </ul>
+
+            <!-- =========================
+       QA NOTE
+  ========================= -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    QA Note
+                </span>
+
+                <p>
+                    Uma estrutura muito útil para automação de QA é separar
+                    o <strong>corpo da resposta</strong> e o
+                    <strong>Status Code</strong>. Dessa forma, o teste consegue
+                    analisar o conteúdo retornado e, ao mesmo tempo, decidir
+                    automaticamente se deve continuar ou falhar utilizando
+                    <strong>if</strong> e <strong>exit 1</strong>.
+                </p>
+
+            </div>
+
+        </article>
+
+        <!-- =========================
+     FOOTER
+========================= -->
+
+        <footer>
+
+            <div class="footer-brand">
+                Hora do QA
+            </div>
+
+            <div class="footer-meta">
+
+                <span>
+                    CURL / REF-007
+                </span>
+
+                <span>
+                    API AUTOMATION
+                </span>
+
+                <span class="footer-pass">
+                    READY
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+    <script type="module">
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: "dark",
+            securityLevel: "loose"
+        });
+    </script>
+</body>
+
+</html>

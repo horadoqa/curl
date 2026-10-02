@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cURL — Atualizando Recursos com PATCH</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="page">
+        <!-- =========================
+     HEADER
+========================= -->
+
+        <header>
+
+            <div class="logo">
+
+                <img src="logo.png" alt="Logo Hora do QA">
+
+            </div>
+
+
+            <div class="brand">
+
+                <span class="eyebrow">
+                    Software Quality / API
+                </span>
+
+                <span class="brand-name">
+                    Hora do QA
+                </span>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    CURL / PATCH
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+     HERO
+========================= -->
+
+        <section class="hero">
+
+            <div class="hero-label">
+                cURL
+            </div>
+
+
+            <h1>
+                Atualizando<br>
+                Recursos com PATCH
+            </h1>
+
+
+            <p class="hero-description">
+                Como utilizar o método <strong>PATCH</strong> com o cURL
+                para atualizar parcialmente um recurso de uma API.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+     CONCEPT
+========================= -->
+
+        <article class="concept">
+
+
+            <div class="concept-top">
+
+                <span class="concept-number">
+                    CONCEITO / 09
+                </span>
+
+                <span class="concept-status">
+                    HTTP / PATCH
+                </span>
+
+            </div>
+
+
+            <h2>
+                Atualizando Recursos com PATCH
+            </h2>
+
+
+            <div class="concept-subtitle">
+                cURL / Partial Update
+            </div>
+
+
+            <!-- =========================
+       CONCEITO
+  ========================= -->
+
+            <h3>
+                O que é PATCH?
+            </h3>
+
+            <p class="concept-description">
+                O método HTTP <strong>PATCH</strong> é utilizado quando
+                precisamos realizar uma <strong>atualização parcial</strong>
+                de um recurso existente.
+            </p>
+
+            <p class="concept-description">
+                Diferentemente de uma atualização completa, podemos enviar
+                somente os campos que precisam ser modificados.
+            </p>
+
+
+            <!-- =========================
+       COMANDO
+  ========================= -->
+
+            <h3>
+                Comando
+            </h3>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X PATCH https://serverest.dev/usuarios/ID \</span><span class="code-line" data-line="2">     -H "Content-Type: application/json" \</span><span class="code-line" data-line="3">     -d '{"nome":"Novo Nome"}'</span></code></pre>
+
+
+            <!-- =========================
+       ENTENDENDO
+  ========================= -->
+
+            <h3>
+                Entendendo a requisição
+            </h3>
+
+            <p class="concept-description">
+                O comando possui três elementos principais:
+                o método HTTP, o header que identifica o formato dos dados
+                e o corpo da requisição.
+            </p>
+
+
+            <ul>
+
+                <li>
+                    <code>-X PATCH</code> define o método HTTP utilizado
+                    na requisição.
+                </li>
+
+                <li>
+                    <code>https://serverest.dev/usuarios/ID</code>
+                    representa o endpoint do usuário que será atualizado.
+                </li>
+
+                <li>
+                    <code>-H "Content-Type: application/json"</code>
+                    informa que o corpo da requisição está no formato JSON.
+                </li>
+
+                <li>
+                    <code>-d '{"nome":"Novo Nome"}'</code>
+                    envia o campo que será atualizado.
+                </li>
+
+            </ul>
+
+
+            <!-- =========================
+       URL
+  ========================= -->
+
+            <h3>
+                Identificando o recurso
+            </h3>
+
+            <p class="concept-description">
+                O <strong>ID</strong> presente na URL representa o recurso
+                que será alterado.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">https://serverest.dev/usuarios/ID</span></code></pre>
+
+            <p class="concept-description">
+                Por exemplo, caso o ID do usuário seja
+                <code>abc123</code>, a URL poderia ser:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">https://serverest.dev/usuarios/abc123</span></code></pre>
+
+
+            <!-- =========================
+       BODY
+  ========================= -->
+
+            <h3>
+                Corpo da requisição
+            </h3>
+
+            <p class="concept-description">
+                O corpo contém somente o campo que queremos modificar:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">  "nome": "Novo Nome"</span><span class="code-line" data-line="3">}</span></code></pre>
+
+            <p class="concept-description">
+                Nesse caso, estamos solicitando que apenas o campo
+                <strong>nome</strong> seja atualizado.
+            </p>
+
+
+            <!-- =========================
+       PATCH VS PUT
+  ========================= -->
+
+            <h3>
+                PATCH vs PUT
+            </h3>
+
+            <p class="concept-description">
+                Uma diferença importante em testes de API é entender
+                a finalidade de <strong>PATCH</strong> e <strong>PUT</strong>.
+            </p>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Método
+                            </th>
+
+                            <th>
+                                Utilização
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <code>PATCH</code>
+                            </td>
+
+                            <td>
+                                Atualização parcial de um recurso.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <code>PUT</code>
+                            </td>
+
+                            <td>
+                                Utilizado para uma atualização do recurso
+                                conforme a representação enviada pela API.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- =========================
+       EXEMPLO
+  ========================= -->
+
+            <h3>
+                Atualizando outros campos
+            </h3>
+
+            <p class="concept-description">
+                Podemos enviar mais de um campo no mesmo JSON,
+                caso a API permita essa atualização.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X PATCH https://serverest.dev/usuarios/ID \</span><span class="code-line" data-line="2">     -H "Content-Type: application/json" \</span><span class="code-line" data-line="3">     -d '{</span><span class="code-line" data-line="4">       "nome": "Novo Nome",</span><span class="code-line" data-line="5">       "password": "novaSenha123"</span><span class="code-line" data-line="6">     }'</span></code></pre>
+
+
+            <!-- =========================
+       STATUS CODE
+  ========================= -->
+
+            <h3>
+                Verificando o Status Code
+            </h3>
+
+            <p class="concept-description">
+                Durante um teste de API, podemos utilizar o
+                <strong>-w</strong> para visualizar o Status Code
+                retornado pelo servidor.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -s -o resposta.json -w "%{http_code}" \</span><span class="code-line" data-line="2">     -X PATCH https://serverest.dev/usuarios/ID \</span><span class="code-line" data-line="3">     -H "Content-Type: application/json" \</span><span class="code-line" data-line="4">     -d '{"nome":"Novo Nome"}'</span></code></pre>
+
+            <p class="concept-description">
+                Dessa forma, podemos separar o corpo da resposta
+                do Status Code retornado pela API.
+            </p>
+
+
+            <!-- =========================
+       VALIDAÇÃO
+  ========================= -->
+
+            <h3>
+                Validando o resultado
+            </h3>
+
+            <p class="concept-description">
+                Em uma automação de QA, podemos utilizar o Status Code
+                para determinar se o teste deve continuar ou falhar.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">STATUS=$(curl -s \</span><span class="code-line" data-line="2">  -o resposta.json \</span><span class="code-line" data-line="3">  -w "%{http_code}" \</span><span class="code-line" data-line="4">  -X PATCH https://serverest.dev/usuarios/ID \</span><span class="code-line" data-line="5">  -H "Content-Type: application/json" \</span><span class="code-line" data-line="6">  -d '{"nome":"Novo Nome"}')</span><span class="code-line" data-line="7"></span><span class="code-line" data-line="8">if [ "$STATUS" -eq 200 ]; then</span><span class="code-line" data-line="9">  echo "Usuário atualizado com sucesso"</span><span class="code-line" data-line="10">else</span><span class="code-line" data-line="11">  echo "Falha ao atualizar usuário"</span><span class="code-line" data-line="12">  exit 1</span><span class="code-line" data-line="13">fi</span></code></pre>
+
+
+            <!-- =========================
+       FLUXO
+  ========================= -->
+
+            <h3>
+                Fluxo da atualização
+            </h3>
+
+            <div class="mermaid-wrapper">
+
+                <div class="mermaid">
+
+                    flowchart TD
+
+                    A[Requisição PATCH] --> B[cURL]
+
+                    B --> C["/usuarios/ID"]
+
+                    C --> D["JSON"]
+
+                    D --> E["nome: Novo Nome"]
+
+                    E --> F[Servidor]
+
+                    F --> G{Atualização realizada?}
+
+                    G -->|SIM| H["Status Code de sucesso"]
+                    G -->|NÃO| I["Status Code de erro"]
+
+                    H --> J[Teste continua]
+                    I --> K["exit 1"]
+
+                    style A fill:#1976D2,color:#fff
+                    style B fill:#42A5F5,color:#fff
+                    style C fill:#64B5F6,color:#000
+                    style D fill:#90CAF9,color:#000
+                    style E fill:#90CAF9,color:#000
+                    style F fill:#42A5F5,color:#fff
+                    style G fill:#FFF176,color:#000
+                    style H fill:#2E7D32,color:#fff
+                    style I fill:#C62828,color:#fff
+                    style J fill:#2E7D32,color:#fff
+                    style K fill:#C62828,color:#fff
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+       RESUMO
+  ========================= -->
+
+            <h3>
+                Resumindo
+            </h3>
+
+            <p class="concept-description">
+                Para realizar uma atualização parcial utilizando
+                o cURL, podemos utilizar:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X PATCH &lt;URL&gt; \</span><span class="code-line" data-line="2">     -H "Content-Type: application/json" \</span><span class="code-line" data-line="3">     -d '{"campo":"novo valor"}'</span></code></pre>
+
+
+            <ul>
+
+                <li>
+                    <code>PATCH</code> indica uma atualização parcial.
+                </li>
+
+                <li>
+                    O <code>ID</code> identifica o recurso que será atualizado.
+                </li>
+
+                <li>
+                    <code>Content-Type: application/json</code> informa
+                    o formato do corpo.
+                </li>
+
+                <li>
+                    <code>-d</code> envia os dados que serão utilizados
+                    na atualização.
+                </li>
+
+                <li>
+                    O <code>Status Code</code> pode ser utilizado para
+                    validar o resultado do teste.
+                </li>
+
+            </ul>
+
+
+            <!-- =========================
+       QA NOTE
+  ========================= -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    QA Note
+                </span>
+
+                <p>
+                    Em testes de API, o <strong>PATCH</strong> é especialmente
+                    útil para validar atualizações parciais. Uma boa prática
+                    é verificar não apenas o <strong>Status Code</strong>,
+                    mas também consultar o recurso posteriormente para
+                    confirmar que o campo esperado foi realmente alterado.
+                </p>
+
+            </div>
+
+
+        </article>
+
+
+        <!-- =========================
+     FOOTER
+========================= -->
+
+        <footer>
+
+            <div class="footer-brand">
+                Hora do QA
+            </div>
+
+
+            <div class="footer-meta">
+
+                <span>
+                    CURL / REF-009
+                </span>
+
+                <span>
+                    API TESTING
+                </span>
+
+                <span class="footer-pass">
+                    READY
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main> <!-- ========================= MERMAID ========================= -->
+    <script
+        type="module"> import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs"; mermaid.initialize({ startOnLoad: true, theme: "dark", securityLevel: "loose" }); </script>
+</body>
+
+</html>

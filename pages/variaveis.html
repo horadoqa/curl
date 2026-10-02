@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cURL — Variáveis de Ambiente</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="page">
+        <!-- =========================
+     HEADER
+========================= -->
+
+        <header>
+
+            <div class="logo">
+
+                <img src="logo.png" alt="Logo Hora do QA">
+
+            </div>
+
+
+            <div class="brand">
+
+                <span class="eyebrow">
+                    Software Quality / API
+                </span>
+
+                <span class="brand-name">
+                    Hora do QA
+                </span>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    CURL / ENVIRONMENT
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+     HERO
+========================= -->
+
+        <section class="hero">
+
+            <div class="hero-label">
+                cURL
+            </div>
+
+
+            <h1>
+                Variáveis<br>
+                de Ambiente
+            </h1>
+
+
+            <p class="hero-description">
+                Como utilizar variáveis de ambiente para armazenar
+                informações de configuração e evitar colocar tokens
+                diretamente nos scripts de automação.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+     CONCEPT
+========================= -->
+
+        <article class="concept">
+
+
+            <div class="concept-top">
+
+                <span class="concept-number">
+                    CONCEITO / 10
+                </span>
+
+                <span class="concept-status">
+                    CURL / ENVIRONMENT
+                </span>
+
+            </div>
+
+
+            <h2>
+                Trabalhando com Variáveis de Ambiente
+            </h2>
+
+
+            <div class="concept-subtitle">
+                cURL / Environment Variables
+            </div>
+
+
+            <!-- =========================
+       CONCEITO
+  ========================= -->
+
+            <h3>
+                Por que utilizar variáveis?
+            </h3>
+
+            <p class="concept-description">
+                Durante a automação de testes de API, podemos precisar
+                utilizar informações como <strong>tokens</strong>,
+                URLs, usuários, senhas ou outras configurações.
+            </p>
+
+            <p class="concept-description">
+                Em vez de colocar essas informações diretamente no script,
+                podemos armazená-las em <strong>variáveis de ambiente</strong>
+                e acessá-las durante a execução.
+            </p>
+
+
+            <!-- =========================
+       CRIANDO VARIÁVEL
+  ========================= -->
+
+            <h3>
+                Criando uma variável
+            </h3>
+
+            <p class="concept-description">
+                No terminal, podemos criar uma variável de ambiente
+                utilizando o comando <code>export</code>.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">export TOKEN="eyJhbGciOiJIUzI1NiIs..."</span></code></pre>
+
+
+            <p class="concept-description">
+                Nesse exemplo, o valor do token é armazenado na variável
+                chamada <strong>TOKEN</strong>.
+            </p>
+
+
+            <!-- =========================
+       UTILIZANDO VARIÁVEL
+  ========================= -->
+
+            <h3>
+                Utilizando a variável no cURL
+            </h3>
+
+            <p class="concept-description">
+                Depois de criar a variável, podemos utilizá-la dentro
+                do comando cURL utilizando o símbolo <code>$</code>.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl \</span><span class="code-line" data-line="2">  -H "Authorization: Bearer $TOKEN" \</span><span class="code-line" data-line="3">  https://serverest.dev/usuarios</span></code></pre>
+
+
+            <!-- =========================
+       ENTENDENDO
+  ========================= -->
+
+            <h3>
+                Entendendo o comando
+            </h3>
+
+            <ul>
+
+                <li>
+                    <code>export</code> cria uma variável de ambiente
+                    disponível para os processos iniciados pelo shell.
+                </li>
+
+                <li>
+                    <code>TOKEN</code> é o nome da variável utilizada
+                    para armazenar o token.
+                </li>
+
+                <li>
+                    <code>$TOKEN</code> acessa o valor armazenado
+                    nessa variável.
+                </li>
+
+                <li>
+                    <code>Authorization: Bearer $TOKEN</code> envia
+                    o token no header da requisição.
+                </li>
+
+            </ul>
+
+
+            <!-- =========================
+       COMPARAÇÃO
+  ========================= -->
+
+            <h3>
+                Token direto vs variável
+            </h3>
+
+            <p class="concept-description">
+                Uma abordagem menos adequada para scripts é colocar
+                diretamente o token no comando:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl \</span><span class="code-line" data-line="2">  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIs..." \</span><span class="code-line" data-line="3">  https://serverest.dev/usuarios</span></code></pre>
+
+
+            <p class="concept-description">
+                Podemos substituir o valor diretamente exposto pela
+                variável de ambiente:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl \</span><span class="code-line" data-line="2">  -H "Authorization: Bearer $TOKEN" \</span><span class="code-line" data-line="3">  https://serverest.dev/usuarios</span></code></pre>
+
+
+            <!-- =========================
+       OUTRAS VARIÁVEIS
+  ========================= -->
+
+            <h3>
+                Variáveis para diferentes ambientes
+            </h3>
+
+            <p class="concept-description">
+                O mesmo conceito pode ser utilizado para armazenar
+                diferentes URLs de API.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">export BASE_URL="https://serverest.dev"</span><span class="code-line" data-line="2"></span><span class="code-line" data-line="3">curl "$BASE_URL/usuarios"</span></code></pre>
+
+
+            <p class="concept-description">
+                Também podemos combinar diferentes variáveis:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">export BASE_URL="https://serverest.dev"</span><span class="code-line" data-line="2">export TOKEN="eyJhbGciOiJIUzI1NiIs..."</span><span class="code-line" data-line="3"></span><span class="code-line" data-line="4">curl \</span><span class="code-line" data-line="5">  -H "Authorization: Bearer $TOKEN" \</span><span class="code-line" data-line="6">  "$BASE_URL/usuarios"</span></code></pre>
+
+
+            <!-- =========================
+       SCRIPT
+  ========================= -->
+
+            <h3>
+                Utilizando em um script
+            </h3>
+
+            <p class="concept-description">
+                As variáveis de ambiente também podem ser utilizadas
+                dentro de scripts de automação.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">#!/bin/bash</span><span class="code-line" data-line="2"></span><span class="code-line" data-line="3">curl \</span><span class="code-line" data-line="4">  -H "Authorization: Bearer $TOKEN" \</span><span class="code-line" data-line="5">  "$BASE_URL/usuarios"</span></code></pre>
+
+
+            <p class="concept-description">
+                Nesse cenário, o script não precisa necessariamente
+                conter os valores específicos do ambiente.
+            </p>
+
+
+            <!-- =========================
+       FLUXO
+  ========================= -->
+
+            <h3>
+                Fluxo da variável de ambiente
+            </h3>
+
+            <div class="mermaid-wrapper">
+
+                <div class="mermaid">
+
+                    flowchart TD
+
+                    A["Variável de Ambiente"] --> B["TOKEN"]
+
+                    B --> C["$TOKEN"]
+
+                    C --> D["Authorization: Bearer"]
+
+                    D --> E[cURL]
+
+                    E --> F["GET /usuarios"]
+
+                    F --> G[API]
+
+                    G --> H[Resposta]
+
+                    style A fill:#1976D2,color:#fff
+                    style B fill:#42A5F5,color:#fff
+                    style C fill:#90CAF9,color:#000
+                    style D fill:#64B5F6,color:#000
+                    style E fill:#42A5F5,color:#fff
+                    style F fill:#90CAF9,color:#000
+                    style G fill:#1976D2,color:#fff
+                    style H fill:#2E7D32,color:#fff
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+       BOAS PRÁTICAS
+  ========================= -->
+
+            <h3>
+                Boas práticas
+            </h3>
+
+            <ul>
+
+                <li>
+                    Evite colocar tokens diretamente no código-fonte.
+                </li>
+
+                <li>
+                    Utilize variáveis de ambiente para configurações
+                    específicas do ambiente.
+                </li>
+
+                <li>
+                    Evite versionar arquivos que contenham credenciais
+                    reais.
+                </li>
+
+                <li>
+                    Utilize valores diferentes para ambientes de
+                    desenvolvimento, teste e produção quando necessário.
+                </li>
+
+                <li>
+                    Em pipelines de CI/CD, prefira mecanismos de
+                    secrets fornecidos pela própria plataforma.
+                </li>
+
+            </ul>
+
+
+            <!-- =========================
+       EXEMPLO COMPLETO
+  ========================= -->
+
+            <h3>
+                Exemplo completo
+            </h3>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">export BASE_URL="https://serverest.dev"</span><span class="code-line" data-line="2">export TOKEN="eyJhbGciOiJIUzI1NiIs..."</span><span class="code-line" data-line="3"></span><span class="code-line" data-line="4">echo "Consultando API..."</span><span class="code-line" data-line="5"></span><span class="code-line" data-line="6">curl \</span><span class="code-line" data-line="7">  -H "Authorization: Bearer $TOKEN" \</span><span class="code-line" data-line="8">  "$BASE_URL/usuarios"</span></code></pre>
+
+
+            <!-- =========================
+       RESUMO
+  ========================= -->
+
+            <h3>
+                Resumindo
+            </h3>
+
+            <p class="concept-description">
+                Para armazenar um token em uma variável de ambiente:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">export TOKEN="seu-token"</span></code></pre>
+
+
+            <p class="concept-description">
+                E utilizá-lo no cURL:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl \</span><span class="code-line" data-line="2">  -H "Authorization: Bearer $TOKEN" \</span><span class="code-line" data-line="3">  https://serverest.dev/usuarios</span></code></pre>
+
+
+            <!-- =========================
+       QA NOTE
+  ========================= -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    QA Note
+                </span>
+
+                <p>
+                    Utilizar variáveis de ambiente ajuda a separar
+                    <strong>configuração</strong> e <strong>credenciais</strong>
+                    do código do teste. Em automações de QA e pipelines
+                    de CI/CD, essa abordagem facilita a utilização do
+                    mesmo script em diferentes ambientes e reduz o risco
+                    de colocar tokens diretamente no código-fonte.
+                </p>
+
+            </div>
+
+
+        </article>
+
+
+        <!-- =========================
+     FOOTER
+========================= -->
+
+        <footer>
+
+            <div class="footer-brand">
+                Hora do QA
+            </div>
+
+
+            <div class="footer-meta">
+
+                <span>
+                    CURL / REF-010
+                </span>
+
+                <span>
+                    API TESTING
+                </span>
+
+                <span class="footer-pass">
+                    READY
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main> <!-- ========================= MERMAID ========================= -->
+    <script
+        type="module"> import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs"; mermaid.initialize({ startOnLoad: true, theme: "dark", securityLevel: "loose" }); </script>
+</body>
+
+</html>

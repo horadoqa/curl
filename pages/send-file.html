@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cURL — Upload de Arquivos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main class="page">
+        <!-- =========================
+     HEADER
+========================= -->
+
+        <header>
+
+            <div class="logo">
+
+                <img src="logo.png" alt="Logo">
+
+            </div>
+
+
+            <div class="brand">
+
+                <span class="eyebrow">
+                    Software Quality / API Testing
+                </span>
+
+                <span class="brand-name">
+                    Hora do QA
+                </span>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    CURL / UPLOAD
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+     HERO
+========================= -->
+
+        <section class="hero">
+
+            <div class="hero-label">
+                cURL — Upload
+            </div>
+
+
+            <h1>
+                Upload<br>
+                Files
+            </h1>
+
+
+            <p class="hero-description">
+
+                O cURL também permite enviar arquivos para um
+                servidor utilizando requisições HTTP.
+
+                Para isso, podemos utilizar o parâmetro
+                <strong>-F</strong>, que envia os dados no formato
+                <strong>multipart/form-data</strong>.
+
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+     CONCEPT
+========================= -->
+
+        <article class="concept">
+
+
+            <!-- =========================
+       TOP
+  ========================= -->
+
+            <div class="concept-top">
+
+                <span class="concept-number">
+                    CONCEITO / 05
+                </span>
+
+                <span class="concept-status">
+                    HTTP / UPLOAD
+                </span>
+
+            </div>
+
+
+            <!-- =========================
+       TITLE
+  ========================= -->
+
+            <h2>
+                Enviando arquivos com cURL
+            </h2>
+
+
+            <div class="concept-subtitle">
+                cURL / multipart-form-data / Upload
+            </div>
+
+
+            <!-- =========================
+       CONCEITO
+  ========================= -->
+
+            <h3>
+                O que é upload?
+            </h3>
+
+
+            <p class="concept-description">
+
+                Upload é o processo de enviar um arquivo do cliente
+                para um servidor.
+
+                Em APIs, esse recurso pode ser utilizado para
+                enviar imagens, documentos, anexos e outros tipos
+                de arquivos.
+
+            </p>
+
+
+            <!-- =========================
+       COMANDO
+  ========================= -->
+
+            <h3>
+                Comando
+            </h3>
+
+
+            <p class="concept-description">
+
+                Para enviar um arquivo utilizando cURL,
+                podemos utilizar o parâmetro
+                <strong>-F</strong>:
+
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2">-F "file=@/caminho/do/arquivo.jpg" \</span><span class="code-line" data-line="3">https://api.exemplo.com/upload</span></code></pre>
+
+
+            <!-- =========================
+       EXPLICAÇÃO
+  ========================= -->
+
+            <h3>
+                Entendendo a requisição
+            </h3>
+
+
+            <p class="concept-description">
+
+                <strong>-X POST</strong> define o método HTTP como
+                <strong>POST</strong>.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>-F</strong> indica que os dados serão
+                enviados como um formulário
+                <strong>multipart/form-data</strong>.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>file=</strong> representa o nome do campo
+                que a API espera receber.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                O caractere <strong>@</strong> informa ao cURL que
+                o valor deve ser lido a partir de um arquivo local.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>https://api.exemplo.com/upload</strong>
+                representa o endpoint responsável por receber
+                o arquivo.
+
+            </p>
+
+
+            <!-- =========================
+       FILE PATH
+  ========================= -->
+
+            <h3>
+                Caminho do arquivo
+            </h3>
+
+
+            <p class="concept-description">
+
+                O caminho informado depois do
+                <strong>@</strong> deve apontar para o arquivo
+                existente no computador.
+
+                Por exemplo, em um sistema Linux:
+
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2">-F "file=@/home/usuario/Downloads/foto.jpg" \</span><span class="code-line" data-line="3">https://api.exemplo.com/upload</span></code></pre>
+
+
+            <p class="concept-description">
+
+                No Windows, o caminho pode ser informado desta forma:
+
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST ^</span><span class="code-line" data-line="2">-F "file=@C:\Users\Usuario\Downloads\foto.jpg" ^</span><span class="code-line" data-line="3">https://api.exemplo.com/upload</span></code></pre>
+
+
+            <!-- =========================
+       QA NOTE
+  ========================= -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    QA Note
+                </span>
+
+                <p>
+
+                    O <strong>@</strong> é importante porque informa
+                    ao cURL que o valor deve ser carregado de um
+                    arquivo local.
+
+                    Sem ele, o cURL interpreta o valor como texto,
+                    e não como um arquivo.
+
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+       OUTROS CAMPOS
+  ========================= -->
+
+            <h3>
+                Enviando outros dados
+            </h3>
+
+
+            <p class="concept-description">
+
+                Também podemos enviar outros campos do formulário
+                junto com o arquivo.
+
+                Para isso, basta utilizar o parâmetro
+                <strong>-F</strong> novamente.
+
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2">-F "file=@/caminho/do/arquivo.jpg" \</span><span class="code-line" data-line="3">-F "descricao=Foto de perfil" \</span><span class="code-line" data-line="4">https://api.exemplo.com/upload</span></code></pre>
+
+
+            <p class="concept-description">
+
+                Nesse exemplo, a requisição possui dois campos:
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>file</strong> — contém o arquivo que será
+                enviado para o servidor.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>descricao</strong> — contém um texto
+                relacionado ao arquivo.
+
+            </p>
+
+
+            <!-- =========================
+       MULTIPART
+  ========================= -->
+
+            <h3>
+                Por que multipart/form-data?
+            </h3>
+
+
+            <p class="concept-description">
+
+                O formato <strong>multipart/form-data</strong>
+                permite combinar arquivos e outros campos de
+                formulário na mesma requisição HTTP.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                Por isso, esse formato é bastante utilizado em
+                APIs que possuem funcionalidades como:
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>•</strong> Upload de imagens.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>•</strong> Upload de documentos.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>•</strong> Envio de anexos.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>•</strong> Importação de arquivos.
+
+            </p>
+
+
+            <!-- =========================
+       RESUMO
+  ========================= -->
+
+            <h3>
+                Resumindo
+            </h3>
+
+
+            <p class="concept-description">
+
+                Para enviar um arquivo utilizando cURL,
+                podemos utilizar:
+
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2">-F "campo=@/caminho/do/arquivo.extensao" \</span><span class="code-line" data-line="3">https://api.exemplo.com/upload</span></code></pre>
+
+
+            <!-- =========================
+       FINAL NOTE
+  ========================= -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    cURL
+                </span>
+
+                <p>
+
+                    <strong>-F</strong> envia dados como
+                    <strong>multipart/form-data</strong>.
+
+                    O <strong>@</strong> indica que o valor deve
+                    ser enviado a partir de um arquivo local.
+
+                </p>
+
+            </div>
+
+
+        </article>
+
+
+        <!-- =========================
+     FOOTER
+========================= -->
+
+        <footer>
+
+            <div class="footer-brand">
+                Hora do QA
+            </div>
+
+
+            <div class="footer-meta">
+
+                <span>
+                    CURL / REF-005
+                </span>
+
+                <span>
+                    API TESTING
+                </span>
+
+                <span class="footer-pass">
+                    READY
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>cURL — Headers</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+  <main class="page">
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+      <div class="logo">
+
+        <img
+          src="logo.png"
+          alt="Logo"
+        >
+
+      </div>
+
+
+      <div class="brand">
+
+        <span class="eyebrow">
+          Software Quality / API
+        </span>
+
+        <span class="brand-name">
+          Hora do QA
+        </span>
+
+      </div>
+
+
+      <div class="status">
+
+        <span class="status-indicator"></span>
+
+        <span>
+          CURL / HEADERS
+        </span>
+
+      </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+      <div class="hero-label">
+        cURL
+      </div>
+
+
+      <h1>
+        Headers
+      </h1>
+
+
+      <p class="hero-description">
+        Como adicionar cabeçalhos HTTP utilizando o cURL
+        para enviar informações adicionais em requisições,
+        incluindo autenticação, Content-Type e Accept.
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         CONCEPT
+    ========================= -->
+
+    <article class="concept">
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          CONCEITO / 06
+        </span>
+
+        <span class="concept-status">
+          HTTP / HEADERS
+        </span>
+
+      </div>
+
+
+      <h2>
+        Adicionando Cabeçalhos
+      </h2>
+
+
+      <div class="concept-subtitle">
+        cURL / HTTP Headers
+      </div>
+
+
+      <!-- =========================
+           CONCEITO
+      ========================= -->
+
+      <h3>
+        O que são Headers?
+      </h3>
+
+      <p class="concept-description">
+        Os <strong>headers</strong> são informações adicionais
+        enviadas junto com uma requisição HTTP. Eles podem
+        fornecer instruções ou informações ao servidor sobre
+        como a requisição deve ser interpretada.
+      </p>
+
+      <p class="concept-description">
+        No <strong>cURL</strong>, podemos adicionar um cabeçalho
+        utilizando a opção <strong>-H</strong>, também conhecida
+        como <strong>--header</strong>.
+      </p>
+
+
+      <!-- =========================
+           COMANDO
+      ========================= -->
+
+      <h3>
+        Comando
+      </h3>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -H "Nome-Do-Header: valor" https://api.exemplo.com/usuarios</span></code></pre>
+
+
+      <!-- =========================
+           EXEMPLO
+      ========================= -->
+
+      <h3>
+        Exemplo
+      </h3>
+
+      <p class="concept-description">
+        Podemos utilizar o header <strong>Authorization</strong>
+        para enviar um token de autenticação para uma API.
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X GET https://api.exemplo.com/usuarios \</span><span class="code-line" data-line="2">-H "Authorization: Bearer &lt;token&gt;"</span></code></pre>
+
+
+      <!-- =========================
+           EXPLICAÇÃO
+      ========================= -->
+
+      <h3>
+        Entendendo o Header
+      </h3>
+
+      <p class="concept-description">
+        Nesse exemplo, estamos enviando o seguinte cabeçalho:
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">Authorization: Bearer &lt;token&gt;</span></code></pre>
+
+      <p class="concept-description">
+        O header possui três partes principais:
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">Authorization: Bearer &lt;token&gt;</span><span class="code-line" data-line="2"></span><span class="code-line" data-line="3">Authorization → nome do header</span><span class="code-line" data-line="4">Bearer       → tipo de autenticação</span><span class="code-line" data-line="5">&lt;token&gt;       → token de acesso</span></code></pre>
+
+      <p class="concept-description">
+        Na prática, o <strong>&lt;token&gt;</strong> deve ser
+        substituído pelo token real fornecido pela API.
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X GET https://api.exemplo.com/usuarios \</span><span class="code-line" data-line="2">-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIs..."</span></code></pre>
+
+      <p class="concept-description">
+        O servidor pode utilizar esse token para verificar
+        se o cliente possui autorização para acessar
+        determinado recurso.
+      </p>
+
+
+      <!-- =========================
+           OUTROS HEADERS
+      ========================= -->
+
+      <h3>
+        Outros Headers
+      </h3>
+
+      <p class="concept-description">
+        Além do <strong>Authorization</strong>, existem outros
+        headers muito utilizados em APIs.
+      </p>
+
+
+      <p class="concept-description">
+        Para informar que estamos enviando dados em JSON,
+        podemos utilizar:
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">-H "Content-Type: application/json"</span></code></pre>
+
+
+      <p class="concept-description">
+        Para informar que esperamos receber uma resposta
+        em JSON:
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">-H "Accept: application/json"</span></code></pre>
+
+
+      <!-- =========================
+           VÁRIOS HEADERS
+      ========================= -->
+
+      <h3>
+        Vários Headers
+      </h3>
+
+      <p class="concept-description">
+        Também podemos enviar vários headers na mesma
+        requisição.
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X POST https://api.exemplo.com/usuarios \</span><span class="code-line" data-line="2">-H "Content-Type: application/json" \</span><span class="code-line" data-line="3">-H "Accept: application/json" \</span><span class="code-line" data-line="4">-H "Authorization: Bearer &lt;token&gt;" \</span><span class="code-line" data-line="5">-d '{</span><span class="code-line" data-line="6">    "nome": "Hora do QA",</span><span class="code-line" data-line="7">    "email": "horadoqa@email.com"</span><span class="code-line" data-line="8">}'</span></code></pre>
+
+
+      <!-- =========================
+           RESUMO
+      ========================= -->
+
+      <h3>
+        Resumindo
+      </h3>
+
+      <p class="concept-description">
+        A opção <strong>-H</strong> permite adicionar um
+        cabeçalho à requisição HTTP.
+      </p>
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">-H "Nome-Do-Header: valor"</span></code></pre>
+
+      <p class="concept-description">
+        Os headers são utilizados em diversas situações,
+        principalmente para autenticação, definição do formato
+        dos dados enviados e definição do formato esperado
+        da resposta.
+      </p>
+
+
+      <!-- =========================
+           QA NOTE
+      ========================= -->
+
+      <div class="note">
+
+        <span class="note-label">
+          QA Note
+        </span>
+
+        <p>
+          Headers fazem parte da comunicação entre cliente
+          e servidor. Em testes de API, é importante observar
+          principalmente <strong>Authorization</strong>,
+          <strong>Content-Type</strong> e
+          <strong>Accept</strong>. A opção
+          <strong>-H</strong> permite adicionar esses
+          cabeçalhos diretamente na requisição cURL.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+      <div class="footer-brand">
+        Hora do QA
+      </div>
+
+
+      <div class="footer-meta">
+
+        <span>
+          CURL / REF-006
+        </span>
+
+        <span>
+          QUALITY NOTES
+        </span>
+
+        <span class="footer-pass">
+          READY
+        </span>
+
+      </div>
+
+    </footer>
+
+  </main>
+
+</body>
+
+</html>

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>cURL — Query Parameters</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <main class="page">
+
+
+        <!-- =========================
+         HEADER
+    ========================= -->
+
+        <header>
+
+            <div class="logo">
+
+                <img src="logo.png" alt="Logo">
+
+            </div>
+
+
+            <div class="brand">
+
+                <span class="eyebrow">
+                    Software Quality / API
+                </span>
+
+                <span class="brand-name">
+                    Hora do QA
+                </span>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    CURL / QUERY
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+         HERO
+    ========================= -->
+
+        <section class="hero">
+
+            <div class="hero-label">
+                cURL
+            </div>
+
+
+            <h1>
+                Query<br>
+                Parameters
+            </h1>
+
+
+            <p class="hero-description">
+                Como utilizar parâmetros de consulta em requisições HTTP
+                com o cURL para realizar filtros, buscas e consultas
+                específicas em uma API.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+         CONCEPT
+    ========================= -->
+
+        <article class="concept">
+
+
+            <div class="concept-top">
+
+                <span class="concept-number">
+                    CONCEITO / 08
+                </span>
+
+                <span class="concept-status">
+                    HTTP / QUERY
+                </span>
+
+            </div>
+
+
+            <h2>
+                Query Parameters
+            </h2>
+
+
+            <div class="concept-subtitle">
+                cURL / Query Parameters
+            </div>
+
+
+            <!-- =========================
+           CONCEITO
+      ========================= -->
+
+            <h3>
+                O que são Query Parameters?
+            </h3>
+
+            <p class="concept-description">
+                <strong>Query Parameters</strong> são parâmetros enviados
+                diretamente na URL para fornecer informações adicionais
+                ao servidor durante uma requisição HTTP.
+            </p>
+
+            <p class="concept-description">
+                Eles normalmente são utilizados para realizar
+                <strong>filtros</strong>, <strong>buscas</strong>,
+                <strong>ordenação</strong> e <strong>paginação</strong>
+                dos dados retornados por uma API.
+            </p>
+
+
+            <!-- =========================
+           ESTRUTURA
+      ========================= -->
+
+            <h3>
+                Estrutura da URL
+            </h3>
+
+            <p class="concept-description">
+                Os Query Parameters aparecem depois do caractere
+                <strong>?</strong> na URL.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">https://serverest.dev/usuarios?nome=hora%20do%20QA</span></code></pre>
+
+            <p class="concept-description">
+                Nesse exemplo, temos:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">https://serverest.dev/usuarios</span><span class="code-line" data-line="2">                         │</span><span class="code-line" data-line="3">                         └── endpoint</span><span class="code-line" data-line="4"></span><span class="code-line" data-line="5">?nome=hora%20do%20QA</span><span class="code-line" data-line="6">│    │</span><span class="code-line" data-line="7">│    └── valor</span><span class="code-line" data-line="8">└────── parâmetro</span></code></pre>
+
+
+            <!-- =========================
+           PRIMEIRO EXEMPLO
+      ========================= -->
+
+            <h3>
+                Realizando uma consulta
+            </h3>
+
+            <p class="concept-description">
+                Podemos utilizar o cURL para enviar uma requisição
+                contendo um parâmetro de consulta.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl "https://serverest.dev/usuarios?nome=hora%20do%20QA"</span></code></pre>
+
+            <p class="concept-description">
+                Nesse caso, o parâmetro utilizado é
+                <strong>nome</strong> e o valor informado é
+                <strong>hora do QA</strong>.
+            </p>
+
+
+            <!-- =========================
+           PARÂMETRO
+      ========================== -->
+
+            <h3>
+                Parâmetro e valor
+            </h3>
+
+            <p class="concept-description">
+                Um Query Parameter normalmente segue o formato:
+            </p>
+
+            <pre class="concept-code"><code><span class="code-line" data-line="1">?parametro=valor</span></code></pre>
+
+            <p class="concept-description">
+                No nosso exemplo:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">?nome=hora%20do%20QA</span></code></pre>
+
+            <p class="concept-description">
+                O <strong>?</strong> indica o início dos parâmetros,
+                enquanto <strong>nome</strong> representa o parâmetro
+                e o valor enviado é <strong>hora do QA</strong>.
+            </p>
+
+
+            <!-- =========================
+           URL ENCODE
+      ========================== -->
+
+            <h3>
+                URL Encoding
+            </h3>
+
+            <p class="concept-description">
+                Como espaços não são utilizados diretamente em uma URL,
+                eles podem ser representados utilizando
+                <strong>%20</strong>.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">hora do QA</span><span class="code-line" data-line="2"></span><span class="code-line" data-line="3">↓</span><span class="code-line" data-line="4"></span><span class="code-line" data-line="5">hora%20do%20QA</span></code></pre>
+
+            <p class="concept-description">
+                Dessa forma, a URL completa fica:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl "https://serverest.dev/usuarios?nome=hora%20do%20QA"</span></code></pre>
+
+
+            <!-- =========================
+           MÚLTIPLOS PARÂMETROS
+      ========================== -->
+
+            <h3>
+                Utilizando vários parâmetros
+            </h3>
+
+            <p class="concept-description">
+                Uma URL pode possuir mais de um Query Parameter.
+                Nesse caso, utilizamos o caractere <strong>&amp;</strong>
+                para separar os parâmetros.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl "https://api.exemplo.com/usuarios?nome=joao&amp;idade=30"</span></code></pre>
+
+            <p class="concept-description">
+                A estrutura pode ser representada da seguinte forma:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">?nome=joao&amp;idade=30</span><span class="code-line" data-line="2">│       │</span><span class="code-line" data-line="3">│       └── segundo parâmetro</span><span class="code-line" data-line="4">└────────── primeiro parâmetro</span></code></pre>
+
+
+            <!-- =========================
+           FILTROS
+      ========================== -->
+
+            <h3>
+                Utilizando filtros
+            </h3>
+
+            <p class="concept-description">
+                APIs frequentemente utilizam Query Parameters para
+                filtrar os dados retornados.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl "https://api.exemplo.com/produtos?nome=Notebook"</span></code></pre>
+
+            <p class="concept-description">
+                Nesse caso, estamos solicitando ao servidor dados
+                relacionados ao nome informado no parâmetro.
+            </p>
+
+
+            <!-- =========================
+           PAGINAÇÃO
+      ========================== -->
+
+            <h3>
+                Paginação
+            </h3>
+
+            <p class="concept-description">
+                Outro uso muito comum dos Query Parameters é controlar
+                a paginação dos resultados.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl "https://api.exemplo.com/usuarios?pagina=2&amp;limite=10"</span></code></pre>
+
+            <p class="concept-description">
+                Nesse exemplo, a aplicação recebe dois parâmetros:
+                <strong>pagina</strong> e <strong>limite</strong>.
+            </p>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Parâmetro
+                            </th>
+
+                            <th>
+                                Valor
+                            </th>
+
+                            <th>
+                                Função
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <code>pagina</code>
+                            </td>
+
+                            <td>
+                                <code>2</code>
+                            </td>
+
+                            <td>
+                                Define a página solicitada.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <code>limite</code>
+                            </td>
+
+                            <td>
+                                <code>10</code>
+                            </td>
+
+                            <td>
+                                Define a quantidade de registros.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- =========================
+           QA
+      ========================== -->
+
+            <h3>
+                Query Parameters em testes de API
+            </h3>
+
+            <p class="concept-description">
+                Durante testes de API, Query Parameters são importantes
+                para validar diferentes cenários de consulta.
+            </p>
+
+            <ul>
+
+                <li>
+                    Validar filtros.
+                </li>
+
+                <li>
+                    Validar buscas por diferentes valores.
+                </li>
+
+                <li>
+                    Testar paginação.
+                </li>
+
+                <li>
+                    Validar parâmetros obrigatórios.
+                </li>
+
+                <li>
+                    Testar parâmetros inválidos.
+                </li>
+
+                <li>
+                    Verificar o comportamento quando nenhum resultado
+                    é encontrado.
+                </li>
+
+            </ul>
+
+
+            <!-- =========================
+           TESTE COM STATUS
+      ========================== -->
+
+            <h3>
+                Combinando Query Parameters e Status Code
+            </h3>
+
+            <p class="concept-description">
+                Podemos combinar Query Parameters com o recurso de
+                captura do Status Code que já vimos anteriormente.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">STATUS=$(curl -s \</span><span class="code-line" data-line="2">  -o resposta.json \</span><span class="code-line" data-line="3">  -w "%{http_code}" \</span><span class="code-line" data-line="4">  "https://serverest.dev/usuarios?nome=hora%20do%20QA")</span><span class="code-line" data-line="5"></span><span class="code-line" data-line="6">echo "Status Code: $STATUS"</span></code></pre>
+
+            <p class="concept-description">
+                Dessa forma, podemos validar tanto o conteúdo da
+                consulta quanto o Status Code retornado pela API.
+            </p>
+
+
+            <!-- =========================
+           FLUXO MERMAID
+      ========================== -->
+
+            <h3>
+                Fluxo da consulta
+            </h3>
+
+            <div class="mermaid-wrapper">
+
+                <div class="mermaid">
+
+                    flowchart TD
+
+                    A["Cliente"] --> B["cURL"]
+
+                    B --> C["GET /usuarios"]
+
+                    C --> D["Query Parameters"]
+
+                    D --> E["nome = hora do QA"]
+
+                    E --> F["API"]
+
+                    F --> G["Filtra os dados"]
+
+                    G --> H["Resposta JSON"]
+
+                    H --> I["Status Code"]
+
+                    style A fill:#1976D2,color:#fff
+                    style B fill:#42A5F5,color:#fff
+                    style C fill:#64B5F6,color:#000
+                    style D fill:#90CAF9,color:#000
+                    style E fill:#90CAF9,color:#000
+                    style F fill:#42A5F5,color:#fff
+                    style G fill:#64B5F6,color:#000
+                    style H fill:#90CAF9,color:#000
+                    style I fill:#FFF176,color:#000
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+           RESUMO
+      ========================== -->
+
+            <h3>
+                Resumindo
+            </h3>
+
+            <p class="concept-description">
+                Query Parameters permitem enviar informações adicionais
+                para a API através da URL.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl "https://serverest.dev/usuarios?nome=hora%20do%20QA"</span></code></pre>
+
+            <p class="concept-description">
+                Quando precisamos enviar mais de um parâmetro,
+                utilizamos <strong>&amp;</strong> para separá-los:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl "https://api.exemplo.com/usuarios?nome=joao&amp;pagina=2"</span></code></pre>
+
+
+            <!-- =========================
+           QA NOTE
+      ========================== -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    QA Note
+                </span>
+
+                <p>
+                    Query Parameters são muito utilizados em testes de API
+                    para validar filtros, buscas e paginação. Ao automatizar
+                    esses cenários com cURL, podemos combinar os parâmetros
+                    da URL com <strong>Status Codes</strong>, arquivos de
+                    resposta e ferramentas como <strong>jq</strong> para
+                    criar validações mais completas.
+                </p>
+
+            </div>
+
+
+        </article>
+
+
+        <!-- =========================
+         FOOTER
+    ========================= -->
+
+        <footer>
+
+            <div class="footer-brand">
+                Hora do QA
+            </div>
+
+
+            <div class="footer-meta">
+
+                <span>
+                    CURL / REF-008
+                </span>
+
+                <span>
+                    QUERY PARAMETERS
+                </span>
+
+                <span class="footer-pass">
+                    READY
+                </span>
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =========================
+       MERMAID
+  ========================= -->
+
+    <script type="module">
+
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+        mermaid.initialize({
+
+            startOnLoad: true,
+
+            theme: "dark",
+
+            securityLevel: "loose"
+
+        });
+
+    </script>
+
+</body>
+
+</html>

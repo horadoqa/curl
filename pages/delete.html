@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cURL — DELETE Request</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <main class="page">
+        <!-- =========================
+     HEADER
+========================= -->
+
+        <header>
+
+            <div class="logo">
+
+                <img src="logo.png" alt="Logo">
+
+            </div>
+
+
+            <div class="brand">
+
+                <span class="eyebrow">
+                    Software Quality / API Testing
+                </span>
+
+                <span class="brand-name">
+                    Hora do QA
+                </span>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    CURL / DELETE
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+     HERO
+========================= -->
+
+        <section class="hero">
+
+            <div class="hero-label">
+                cURL — DELETE
+            </div>
+
+
+            <h1>
+                Delete<br>
+                Request
+            </h1>
+
+
+            <p class="hero-description">
+
+                A requisição <strong>DELETE</strong> é utilizada
+                para remover um recurso existente do servidor.
+
+                Neste exemplo, utilizaremos o cURL para excluir
+                um usuário do ServeRest.
+
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+     CONCEPT
+========================= -->
+
+        <article class="concept">
+
+
+            <!-- =========================
+       TOP
+  ========================= -->
+
+            <div class="concept-top">
+
+                <span class="concept-number">
+                    CONCEITO / 04
+                </span>
+
+                <span class="concept-status">
+                    CRUD / DELETE
+                </span>
+
+            </div>
+
+
+            <!-- =========================
+       TITLE
+  ========================= -->
+
+            <h2>
+                DELETE — Removendo um recurso
+            </h2>
+
+
+            <div class="concept-subtitle">
+                cURL / HTTP DELETE / ServeRest
+            </div>
+
+
+            <!-- =========================
+       CONCEITO
+  ========================= -->
+
+            <h3>
+                O que é DELETE?
+            </h3>
+
+
+            <p class="concept-description">
+
+                O método <strong>DELETE</strong> é utilizado para
+                remover um recurso existente no servidor.
+
+                No ServeRest, utilizamos o endpoint
+                <code>/usuarios/{_id}</code> para indicar qual
+                usuário deverá ser excluído.
+
+            </p>
+
+
+            <!-- =========================
+       ENDPOINT
+  ========================= -->
+
+            <h3>
+                Endpoint
+            </h3>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">DELETE https://serverest.dev/usuarios/{_id}</span></code></pre>
+
+
+            <!-- =========================
+       COMANDO
+  ========================= -->
+
+            <h3>
+                Comando
+            </h3>
+
+
+            <p class="concept-description">
+
+                Para excluir um usuário, enviamos uma requisição
+                <strong>DELETE</strong> informando o
+                <strong>_id</strong> do registro diretamente na URL.
+
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X DELETE https://serverest.dev/usuarios/7tS9K8NxabeHLEtk</span></code></pre>
+
+
+            <!-- =========================
+       EXPLICAÇÃO
+  ========================= -->
+
+            <h3>
+                Entendendo a requisição
+            </h3>
+
+
+            <p class="concept-description">
+
+                <strong>-X DELETE</strong> define explicitamente
+                o método HTTP como <strong>DELETE</strong>.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>/usuarios/7tS9K8NxabeHLEtk</strong>
+                representa o endpoint utilizado para identificar
+                o usuário que será removido.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                O <strong>_id</strong> presente na URL permite que
+                o servidor localize exatamente qual registro
+                deverá ser excluído.
+
+            </p>
+
+
+            <!-- =========================
+       BODY
+  ========================= -->
+
+            <h3>
+                É necessário enviar um body?
+            </h3>
+
+
+            <p class="concept-description">
+
+                Diferentemente das requisições <strong>POST</strong>
+                e <strong>PUT</strong>, neste exemplo não precisamos
+                enviar um body contendo os dados do usuário.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                O <strong>_id</strong> informado na URL é suficiente
+                para que o servidor identifique o recurso que
+                deverá ser removido.
+
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X DELETE https://serverest.dev/usuarios/7tS9K8NxabeHLEtk</span></code></pre>
+
+
+            <!-- =========================
+       QA NOTE
+  ========================= -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    QA Note
+                </span>
+
+                <p>
+
+                    No DELETE, o <strong>_id</strong> é a informação
+                    principal para identificar o recurso.
+
+                    Por isso, neste exemplo, não precisamos enviar
+                    os dados do usuário no body da requisição.
+
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+       RESPONSE
+  ========================= -->
+
+            <h3>
+                Resposta de sucesso
+            </h3>
+
+
+            <p class="concept-description">
+
+                Quando a exclusão é realizada com sucesso,
+                o ServeRest retorna uma mensagem confirmando
+                a operação.
+
+            </p>
+
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">{</span><span class="code-line" data-line="2">    "message": "Registro excluído com sucesso"</span><span class="code-line" data-line="3">}</span></code></pre>
+
+
+            <!-- =========================
+       RESUMO
+  ========================= -->
+
+            <h3>
+                Resumindo
+            </h3>
+
+
+            <p class="concept-description">
+
+                O fluxo para excluir um usuário utilizando
+                <strong>DELETE</strong> é:
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>01.</strong>
+                Utilizamos o método DELETE.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>02.</strong>
+                Informamos o endpoint
+                <code>/usuarios</code>.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>03.</strong>
+                Passamos o <strong>_id</strong> do usuário na URL.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>04.</strong>
+                O servidor localiza o usuário pelo
+                <strong>_id</strong>.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>05.</strong>
+                O registro é removido.
+
+            </p>
+
+
+            <p class="concept-description">
+
+                <strong>06.</strong>
+                O servidor retorna uma mensagem confirmando
+                a exclusão.
+
+            </p>
+
+
+            <!-- =========================
+       FINAL NOTE
+  ========================= -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    CRUD
+                </span>
+
+                <p>
+
+                    <strong>DELETE = Delete (Excluir)</strong>.
+
+                    No CRUD, o DELETE é responsável por remover
+                    um recurso existente do servidor.
+
+                </p>
+
+            </div>
+
+
+        </article>
+
+
+        <!-- =========================
+     FOOTER
+========================= -->
+
+        <footer>
+
+            <div class="footer-brand">
+                Hora do QA
+            </div>
+
+
+            <div class="footer-meta">
+
+                <span>
+                    CURL / REF-004
+                </span>
+
+                <span>
+                    API TESTING
+                </span>
+
+                <span class="footer-pass">
+                    READY
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+</body>
+
+</html>

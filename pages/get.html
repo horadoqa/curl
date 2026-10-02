@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>cURL — GET Request</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="style.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+</head>
+
+
+<body>
+
+  <main class="page">
+
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+      <div class="logo">
+
+        <img src="logo.png" alt="Logo">
+
+      </div>
+
+
+      <div class="brand">
+
+        <span class="eyebrow">
+          API / HTTP / COMMAND LINE
+        </span>
+
+        <span class="brand-name">
+          Hora do QA
+        </span>
+
+      </div>
+
+
+      <div class="status">
+
+        <span class="status-indicator"></span>
+
+        <span>
+          CURL / READY
+        </span>
+
+      </div>
+
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+      <div class="hero-label">
+        cURL
+      </div>
+
+
+      <h1>
+        READ —<br>
+        GET Request
+      </h1>
+
+
+      <p class="hero-description">
+        Como utilizar o cURL para consultar usuários,
+        produtos e carrinhos através de requisições
+        HTTP GET no ServeRest.
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         CONCEPT
+    ========================= -->
+
+    <article class="concept">
+
+
+      <!-- =========================
+           CONCEITO
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          CONCEITO / 01
+        </span>
+
+        <span class="concept-status">
+          READ / GET
+        </span>
+
+      </div>
+
+
+      <h2>
+        GET Request
+      </h2>
+
+
+      <div class="concept-subtitle">
+        HTTP / READ
+      </div>
+
+
+      <p class="concept-description">
+        A requisição <strong>GET</strong> é utilizada para
+        <strong>consultar ou obter dados de um servidor</strong>.
+      </p>
+
+
+      <p class="concept-description">
+        No ServeRest, podemos utilizar o método GET para
+        consultar usuários, produtos e carrinhos, tanto para
+        obter uma lista de registros quanto para buscar um
+        registro específico pelo seu <strong>_id</strong>.
+      </p>
+
+
+      <!-- =========================
+           USUÁRIOS
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          EXEMPLO / 01
+        </span>
+
+        <span class="concept-status">
+          USERS
+        </span>
+
+      </div>
+
+
+      <h2>
+        Consultar usuários
+      </h2>
+
+
+      <div class="concept-subtitle">
+        Obter lista de usuários
+      </div>
+
+
+      <p class="concept-description">
+        Para consultar todos os usuários cadastrados,
+        podemos utilizar:
+      </p>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl https://serverest.dev/usuarios</span></code></pre>
+
+
+      <p class="concept-description">
+        Nesse caso, o <strong>cURL utiliza o método GET automaticamente</strong>,
+        pois esse é o método padrão quando nenhum outro é especificado.
+      </p>
+
+
+      <!-- =========================
+           GET EXPLÍCITO
+      ========================= -->
+
+      <div class="concept-subtitle">
+        Especificando o método GET
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X GET https://serverest.dev/usuarios \</span><span class="code-line" data-line="2">-H "accept: application/json"</span></code></pre>
+
+
+      <div class="concept-subtitle">
+        Entendendo a requisição
+      </div>
+
+
+      <p class="concept-description">
+        <strong>-X GET</strong>: define explicitamente o método
+        HTTP como GET. No primeiro exemplo, essa opção não é
+        necessária porque GET já é o método padrão do cURL.
+      </p>
+
+
+      <p class="concept-description">
+        <strong>-H "accept: application/json"</strong>:
+        adiciona um cabeçalho <strong>Accept</strong>, informando
+        que o cliente espera receber a resposta no formato JSON.
+      </p>
+
+
+      <p class="concept-description">
+        <strong>/usuarios</strong>: endpoint utilizado para
+        consultar os usuários.
+      </p>
+
+
+      <!-- =========================
+           NOTE
+      ========================= -->
+
+      <div class="note">
+
+        <span class="note-label">
+          QA Note
+        </span>
+
+        <p>
+          O header <strong>Accept</strong> indica o formato que
+          o cliente prefere receber na resposta. Ele é diferente
+          do <strong>Content-Type</strong>, que indica o formato
+          dos dados enviados no body da requisição.
+        </p>
+
+      </div>
+
+
+      <!-- =========================
+           COMPARAÇÃO
+      ========================= -->
+
+      <div class="concept-subtitle">
+        Resumindo
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl https://serverest.dev/usuarios</span><span class="code-line" data-line="2"></span><span class="code-line" data-line="3">curl -X GET https://serverest.dev/usuarios \</span><span class="code-line" data-line="4">-H "accept: application/json"</span></code></pre>
+
+
+      <p class="concept-description">
+        Os dois comandos realizam uma requisição GET para
+        consultar os usuários.
+      </p>
+
+
+      <p class="concept-description">
+        A principal diferença é que o segundo comando
+        <strong>explicita o método GET e informa o formato
+        esperado da resposta</strong>.
+      </p>
+
+
+      <!-- =========================
+           USUÁRIO POR ID
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          EXEMPLO / 02
+        </span>
+
+        <span class="concept-status">
+          USER / ID
+        </span>
+
+      </div>
+
+
+      <h2>
+        Obter usuário por ID
+      </h2>
+
+
+      <div class="concept-subtitle">
+        Consulta de registro específico
+      </div>
+
+
+      <p class="concept-description">
+        Para consultar um usuário específico, devemos
+        informar o seu <strong>_id</strong> na URL.
+      </p>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl https://serverest.dev/usuarios/{_id}</span></code></pre>
+
+
+      <p class="concept-description">
+        Por exemplo:
+      </p>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl https://serverest.dev/usuarios/7tS9K8NxabeHLEtk</span></code></pre>
+
+
+      <div class="concept-subtitle">
+        Requisição explícita
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X GET https://serverest.dev/usuarios/7tS9K8NxabeHLEtk \</span><span class="code-line" data-line="2">-H "accept: application/json"</span></code></pre>
+
+
+      <p class="concept-description">
+        Nesse caso, o servidor utiliza o <strong>_id</strong>
+        informado na URL para localizar e retornar apenas
+        aquele usuário.
+      </p>
+
+
+      <!-- =========================
+           PRODUTOS
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          EXEMPLO / 03
+        </span>
+
+        <span class="concept-status">
+          PRODUCTS
+        </span>
+
+      </div>
+
+
+      <h2>
+        Consultar produtos
+      </h2>
+
+
+      <div class="concept-subtitle">
+        Obter lista de produtos
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl https://serverest.dev/produtos</span></code></pre>
+
+
+      <div class="concept-subtitle">
+        Especificando método e formato
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X GET https://serverest.dev/produtos \</span><span class="code-line" data-line="2">-H "accept: application/json"</span></code></pre>
+
+
+      <div class="concept-subtitle">
+        Obter produto por ID
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl https://serverest.dev/produtos/{_id}</span></code></pre>
+
+
+      <p class="concept-description">
+        Substitua <strong>{_id}</strong> pelo identificador
+        real do produto.
+      </p>
+
+
+      <!-- =========================
+           CARRINHOS
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          EXEMPLO / 04
+        </span>
+
+        <span class="concept-status">
+          CARTS
+        </span>
+
+      </div>
+
+
+      <h2>
+        Consultar carrinhos
+      </h2>
+
+
+      <div class="concept-subtitle">
+        Obter lista de carrinhos
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl https://serverest.dev/carrinhos</span></code></pre>
+
+
+      <div class="concept-subtitle">
+        Especificando método e formato
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X GET https://serverest.dev/carrinhos \</span><span class="code-line" data-line="2">-H "accept: application/json"</span></code></pre>
+
+
+      <div class="concept-subtitle">
+        Obter carrinho por ID
+      </div>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">curl https://serverest.dev/carrinhos/{_id}</span></code></pre>
+
+
+      <p class="concept-description">
+        Substitua <strong>{_id}</strong> pelo identificador
+        real do carrinho.
+      </p>
+
+
+      <!-- =========================
+           RESUMO
+      ========================= -->
+
+      <div class="concept-top">
+
+        <span class="concept-number">
+          RESUMO / 01
+        </span>
+
+        <span class="concept-status">
+          CRUD / READ
+        </span>
+
+      </div>
+
+
+      <h2>
+        GET = Read
+      </h2>
+
+
+      <div class="concept-subtitle">
+        Consultando recursos
+      </div>
+
+
+      <p class="concept-description">
+        O método <strong>GET</strong> é utilizado para
+        <strong>ler ou consultar recursos</strong> que já
+        existem no servidor.
+      </p>
+
+
+      <pre class="concept-code"><code><span class="code-line" data-line="1">GET /usuarios</span><span class="code-line" data-line="2">GET /usuarios/{_id}</span><span class="code-line" data-line="3"></span><span class="code-line" data-line="4">GET /produtos</span><span class="code-line" data-line="5">GET /produtos/{_id}</span><span class="code-line" data-line="6"></span><span class="code-line" data-line="7">GET /carrinhos</span><span class="code-line" data-line="8">GET /carrinhos/{_id}</span></code></pre>
+
+
+      <!-- =========================
+           QA NOTE
+      ========================= -->
+
+      <div class="note">
+
+        <span class="note-label">
+          QA Note
+        </span>
+
+        <p>
+          No CRUD, o <strong>GET = Read</strong>. Ele é utilizado
+          para consultar dados existentes no servidor sem criar,
+          alterar ou excluir recursos.
+        </p>
+
+      </div>
+
+
+    </article>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+      <div class="footer-brand">
+        Hora do QA
+      </div>
+
+
+      <div class="footer-meta">
+
+        <span>
+          CURL / SERIES-002
+        </span>
+
+        <span>
+          API QUALITY NOTES
+        </span>
+
+        <span class="footer-pass">
+          READY
+        </span>
+
+      </div>
+
+    </footer>
+
+
+  </main>
+
+</body>
+
+</html>

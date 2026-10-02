@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>cURL — Upload de Arquivos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <main class="page">
+
+
+        <!-- =========================
+         HEADER
+    ========================= -->
+
+        <header>
+
+            <div class="logo">
+
+                <img src="logo.png" alt="Logo">
+
+            </div>
+
+
+            <div class="brand">
+
+                <span class="eyebrow">
+                    Software Quality / API
+                </span>
+
+                <span class="brand-name">
+                    Hora do QA
+                </span>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    CURL / UPLOAD
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+         HERO
+    ========================= -->
+
+        <section class="hero">
+
+            <div class="hero-label">
+                cURL
+            </div>
+
+
+            <h1>
+                Upload de<br>
+                Arquivos
+            </h1>
+
+
+            <p class="hero-description">
+                Como enviar arquivos para uma API utilizando o cURL
+                e a opção <strong>-F</strong>, simulando o envio de
+                formulários multipart/form-data.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+         CONCEPT
+    ========================= -->
+
+        <article class="concept">
+
+
+            <div class="concept-top">
+
+                <span class="concept-number">
+                    CONCEITO / 09
+                </span>
+
+                <span class="concept-status">
+                    HTTP / MULTIPART
+                </span>
+
+            </div>
+
+
+            <h2>
+                Upload de Arquivos
+            </h2>
+
+
+            <div class="concept-subtitle">
+                cURL / File Upload
+            </div>
+
+
+            <!-- =========================
+           CONCEITO
+      ========================= -->
+
+            <h3>
+                Enviando arquivos com cURL
+            </h3>
+
+            <p class="concept-description">
+                O cURL também pode ser utilizado para realizar
+                <strong>upload de arquivos</strong> para uma API.
+            </p>
+
+            <p class="concept-description">
+                Para esse tipo de operação, podemos utilizar a opção
+                <strong>-F</strong>, que permite enviar dados utilizando
+                o formato <strong>multipart/form-data</strong>.
+            </p>
+
+
+            <!-- =========================
+           COMANDO
+      ========================= -->
+
+            <h3>
+                Comando
+            </h3>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2">  -F "arquivo=@relatorio.json" \</span><span class="code-line" data-line="3">  https://api.exemplo.com/upload</span></code></pre>
+
+
+            <!-- =========================
+           ENTENDENDO
+      ========================= -->
+
+            <h3>
+                Entendendo a requisição
+            </h3>
+
+            <p class="concept-description">
+                Nesse comando, cada parte possui uma função específica
+                dentro da requisição HTTP.
+            </p>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Parte
+                            </th>
+
+                            <th>
+                                Função
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                <code>-X POST</code>
+                            </td>
+
+                            <td>
+                                Define o método HTTP como POST.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <code>-F</code>
+                            </td>
+
+                            <td>
+                                Envia dados utilizando multipart/form-data.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <code>arquivo</code>
+                            </td>
+
+                            <td>
+                                Define o nome do campo recebido pela API.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <code>@relatorio.json</code>
+                            </td>
+
+                            <td>
+                                Indica que o conteúdo será obtido de um arquivo.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                <code>/upload</code>
+                            </td>
+
+                            <td>
+                                Endpoint responsável por receber o arquivo.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- =========================
+           @
+      ========================== -->
+
+            <h3>
+                O significado do @
+            </h3>
+
+            <p class="concept-description">
+                O caractere <strong>@</strong> possui uma função importante
+                no upload realizado pelo cURL.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">-F "arquivo=@relatorio.json"</span></code></pre>
+
+            <p class="concept-description">
+                O <strong>arquivo</strong> representa o nome do campo
+                esperado pela API.
+            </p>
+
+            <p class="concept-description">
+                Já o <strong>@relatorio.json</strong> informa ao cURL
+                que o valor desse campo deve ser obtido a partir
+                do arquivo existente no computador.
+            </p>
+
+
+            <!-- =========================
+           ARQUIVO
+      ========================== -->
+
+            <h3>
+                Arquivo utilizado
+            </h3>
+
+            <p class="concept-description">
+                Antes de executar o comando, precisamos ter o arquivo
+                disponível no diretório atual.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">ls</span><span class="code-line" data-line="2"></span><span class="code-line" data-line="3">relatorio.json</span></code></pre>
+
+            <p class="concept-description">
+                Nesse exemplo, o arquivo <strong>relatorio.json</strong>
+                está no mesmo diretório onde o comando será executado.
+            </p>
+
+
+            <!-- =========================
+           CAMINHO
+      ========================== -->
+
+            <h3>
+                Enviando um arquivo de outra pasta
+            </h3>
+
+            <p class="concept-description">
+                Também podemos informar o caminho até o arquivo.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2">  -F "arquivo=@./arquivos/relatorio.json" \</span><span class="code-line" data-line="3">  https://api.exemplo.com/upload</span></code></pre>
+
+            <p class="concept-description">
+                Nesse caso, o arquivo está localizado dentro do
+                diretório <strong>arquivos</strong>.
+            </p>
+
+
+            <!-- =========================
+           MULTIPLOS ARQUIVOS
+      ========================== -->
+
+            <h3>
+                Enviando mais de um arquivo
+            </h3>
+
+            <p class="concept-description">
+                Dependendo do contrato da API, também podemos enviar
+                múltiplos arquivos utilizando vários campos
+                <strong>-F</strong>.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2">  -F "arquivo1=@relatorio.json" \</span><span class="code-line" data-line="3">  -F "arquivo2=@evidencias.png" \</span><span class="code-line" data-line="4">  https://api.exemplo.com/upload</span></code></pre>
+
+
+            <!-- =========================
+           ARQUIVO + CAMPOS
+      ========================== -->
+
+            <h3>
+                Arquivo + outros campos
+            </h3>
+
+            <p class="concept-description">
+                Uma requisição multipart também pode conter campos
+                adicionais além do arquivo.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2">  -F "arquivo=@relatorio.json" \</span><span class="code-line" data-line="3">  -F "descricao=Relatório de testes" \</span><span class="code-line" data-line="4">  https://api.exemplo.com/upload</span></code></pre>
+
+            <p class="concept-description">
+                Nesse exemplo, a requisição possui um arquivo e também
+                um campo chamado <strong>descricao</strong>.
+            </p>
+
+
+            <!-- =========================
+           HEADER
+      ========================== -->
+
+            <h3>
+                Content-Type
+            </h3>
+
+            <p class="concept-description">
+                Ao utilizar <strong>-F</strong>, o cURL configura a
+                requisição como <strong>multipart/form-data</strong>.
+            </p>
+
+            <p class="concept-description">
+                Diferentemente de uma requisição JSON, não precisamos
+                montar manualmente o header <strong>Content-Type</strong>
+                com o boundary utilizado no multipart.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">-F "arquivo=@relatorio.json"</span></code></pre>
+
+            <p class="concept-description">
+                O cURL cuida da estrutura necessária para o envio
+                multipart.
+            </p>
+
+
+            <!-- =========================
+           QA
+      ========================== -->
+
+            <h3>
+                Upload em testes de API
+            </h3>
+
+            <p class="concept-description">
+                Uploads são bastante comuns em sistemas que trabalham
+                com documentos, imagens, relatórios e evidências.
+                Em QA, podemos automatizar diferentes cenários.
+            </p>
+
+            <ul>
+
+                <li>
+                    Validar o upload de um arquivo válido.
+                </li>
+
+                <li>
+                    Testar arquivos com extensões não permitidas.
+                </li>
+
+                <li>
+                    Testar arquivos acima do tamanho permitido.
+                </li>
+
+                <li>
+                    Validar o comportamento quando nenhum arquivo é enviado.
+                </li>
+
+                <li>
+                    Verificar o nome e o tipo do arquivo recebido.
+                </li>
+
+                <li>
+                    Validar o Status Code retornado pela API.
+                </li>
+
+                <li>
+                    Verificar a mensagem retornada após o upload.
+                </li>
+
+            </ul>
+
+
+            <!-- =========================
+           STATUS CODE
+      ========================== -->
+
+            <h3>
+                Upload + Status Code
+            </h3>
+
+            <p class="concept-description">
+                Assim como nas outras requisições, podemos capturar
+                o Status Code retornado pela API.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">STATUS=$(curl -s \</span><span class="code-line" data-line="2">  -o resposta.json \</span><span class="code-line" data-line="3">  -w "%{http_code}" \</span><span class="code-line" data-line="4">  -X POST \</span><span class="code-line" data-line="5">  -F "arquivo=@relatorio.json" \</span><span class="code-line" data-line="6">  https://api.exemplo.com/upload)</span><span class="code-line" data-line="7"></span><span class="code-line" data-line="8">echo "Status Code: $STATUS"</span></code></pre>
+
+
+            <!-- =========================
+           VALIDAÇÃO
+      ========================== -->
+
+            <h3>
+                Validando o upload
+            </h3>
+
+            <p class="concept-description">
+                Podemos utilizar o Status Code para determinar se
+                o upload foi processado conforme esperado.
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">STATUS=$(curl -s \</span><span class="code-line" data-line="2">  -o resposta.json \</span><span class="code-line" data-line="3">  -w "%{http_code}" \</span><span class="code-line" data-line="4">  -X POST \</span><span class="code-line" data-line="5">  -F "arquivo=@relatorio.json" \</span><span class="code-line" data-line="6">  https://api.exemplo.com/upload)</span><span class="code-line" data-line="7"></span><span class="code-line" data-line="8">if [ "$STATUS" -eq 200 ]; then</span><span class="code-line" data-line="9">  echo "Upload realizado com sucesso"</span><span class="code-line" data-line="10">else</span><span class="code-line" data-line="11">  echo "Falha no upload - Status: $STATUS"</span><span class="code-line" data-line="12">  exit 1</span><span class="code-line" data-line="13">fi</span></code></pre>
+
+
+            <!-- =========================
+           FLUXO MERMAID
+      ========================== -->
+
+            <h3>
+                Fluxo do Upload
+            </h3>
+
+            <div class="mermaid-wrapper">
+
+                <div class="mermaid">
+
+                    flowchart TD
+
+                    A["Arquivo local"] --> B["cURL"]
+
+                    B --> C["POST /upload"]
+
+                    C --> D["multipart/form-data"]
+
+                    D --> E["API"]
+
+                    E --> F{"Upload válido?"}
+
+                    F -->|SIM| G["Arquivo processado"]
+
+                    F -->|NÃO| H["Erro"]
+
+                    G --> I["Status Code"]
+
+                    H --> J["Status Code"]
+
+                    I --> K["Validação QA"]
+
+                    J --> K
+
+                    K --> L{"Resultado"}
+
+                    L -->|PASS| M["Continua"]
+
+                    L -->|FAIL| N["EXIT 1"]
+
+                    style A fill:#1976D2,color:#fff
+                    style B fill:#42A5F5,color:#fff
+                    style C fill:#64B5F6,color:#000
+                    style D fill:#90CAF9,color:#000
+                    style E fill:#42A5F5,color:#fff
+                    style F fill:#FFF176,color:#000
+                    style G fill:#2E7D32,color:#fff
+                    style H fill:#C62828,color:#fff
+                    style I fill:#90CAF9,color:#000
+                    style J fill:#90CAF9,color:#000
+                    style K fill:#FFF176,color:#000
+                    style L fill:#FFF176,color:#000
+                    style M fill:#2E7D32,color:#fff
+                    style N fill:#C62828,color:#fff
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+           DOWNLOAD VS UPLOAD
+      ========================== -->
+
+            <h3>
+                Upload vs Download
+            </h3>
+
+            <p class="concept-description">
+                O cURL pode trabalhar tanto com o envio quanto com o
+                recebimento de arquivos.
+            </p>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Operação
+                            </th>
+
+                            <th>
+                                Exemplo
+                            </th>
+
+                            <th>
+                                Função
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>
+                                Upload
+                            </td>
+
+                            <td>
+                                <code>-F "arquivo=@arquivo.json"</code>
+                            </td>
+
+                            <td>
+                                Envia um arquivo para a API.
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>
+                                Download
+                            </td>
+
+                            <td>
+                                <code>-O</code>
+                            </td>
+
+                            <td>
+                                Baixa um arquivo disponibilizado pela API ou servidor.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- =========================
+           RESUMO
+      ========================== -->
+
+            <h3>
+                Resumindo
+            </h3>
+
+            <p class="concept-description">
+                Para realizar um upload utilizando cURL, podemos utilizar
+                a opção <strong>-F</strong>:
+            </p>
+
+            <pre
+                class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2">  -F "arquivo=@relatorio.json" \</span><span class="code-line" data-line="3">  https://api.exemplo.com/upload</span></code></pre>
+
+            <p class="concept-description">
+                O <strong>-F</strong> permite enviar dados no formato
+                <strong>multipart/form-data</strong>, enquanto o
+                caractere <strong>@</strong> indica que o valor será
+                obtido de um arquivo local.
+            </p>
+
+
+            <!-- =========================
+           QA NOTE
+      ========================== -->
+
+            <div class="note">
+
+                <span class="note-label">
+                    QA Note
+                </span>
+
+                <p>
+                    Upload de arquivos é um cenário importante em testes
+                    de API. Com o cURL, podemos enviar arquivos, combinar
+                    arquivos com outros campos, capturar o
+                    <strong>Status Code</strong> e automatizar validações
+                    utilizando <strong>if</strong>, <strong>jq</strong>
+                    e <strong>exit 1</strong>.
+                </p>
+
+            </div>
+
+
+        </article>
+
+
+        <!-- =========================
+         FOOTER
+    ========================= -->
+
+        <footer>
+
+            <div class="footer-brand">
+                Hora do QA
+            </div>
+
+
+            <div class="footer-meta">
+
+                <span>
+                    CURL / REF-009
+                </span>
+
+                <span>
+                    FILE UPLOAD
+                </span>
+
+                <span class="footer-pass">
+                    READY
+                </span>
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =========================
+       MERMAID
+  ========================= -->
+
+    <script type="module">
+
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+        mermaid.initialize({
+
+            startOnLoad: true,
+
+            theme: "dark",
+
+            securityLevel: "loose"
+
+        });
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>cURL — Upload de Arquivos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <main class="page">
+
+
+        <!-- =========================
+         HEADER
+    ========================= -->
+
+        <header>
+
+            <div class="logo">
+
+                <img src="logo.png" alt="Logo">
+
+            </div>
+
+
+            <div class="brand">
+
+                <span class="eyebrow">
+                    Software Quality / API
+                </span>
+
+                <span class="brand-name">
+                    Hora do QA
+                </span>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-indicator"></span>
+
+                <span>
+                    CURL / UPLOAD
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+         HERO
+    ========================= -->
+
+        <section class="hero"> <div class="hero-label"> cURL </div> <h1> Enviando<br> Form Data </h1> <p class="hero-description"> Como enviar dados utilizando <strong>multipart/form-data</strong> com o cURL e entender a diferença entre Form Data e JSON. </p> </section> <article class="concept"> <div class="concept-top">
+<span class="concept-number">
+  CONCEITO / 08
+</span>
+
+<span class="concept-status">
+  HTTP / FORM DATA
+</span>
+
+</div> <h2> Enviando Form Data </h2> <div class="concept-subtitle"> cURL / Multipart Form Data </div> <h3> O que é Form Data? </h3> <p class="concept-description"> O <strong>Form Data</strong> é uma forma de enviar informações para uma API utilizando o formato <strong>multipart/form-data</strong>. </p> <p class="concept-description"> No cURL, utilizamos a opção <strong>-F</strong>, também conhecida como <strong>--form</strong>, para enviar os campos do formulário. </p> <h3> Comando </h3> <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2"> -F "email=horadoqa@qa.com" \</span><span class="code-line" data-line="3"> -F "password=1q2w3e4r" \</span><span class="code-line" data-line="4"> https://serverest.dev/login</span></code></pre> <h3> Entendendo o comando </h3> <ul>
+<li>
+  <code>-X POST</code> define o método HTTP como
+  <strong>POST</strong>.
+</li>
+
+<li>
+  <code>-F</code> envia um campo utilizando
+  <strong>multipart/form-data</strong>.
+</li>
+
+<li>
+  <code>email=horadoqa@qa.com</code> representa o campo
+  <strong>email</strong>.
+</li>
+
+<li>
+  <code>password=1q2w3e4r</code> representa o campo
+  <strong>password</strong>.
+</li>
+
+</ul> <h3> O que o cURL envia? </h3> <p class="concept-description"> Quando utilizamos <strong>-F</strong>, o cURL monta automaticamente a requisição utilizando o formato <strong>multipart/form-data</strong>. </p> <p class="concept-description"> O header <strong>Content-Type</strong> é gerenciado pelo próprio cURL, incluindo o <strong>boundary</strong> necessário para separar os campos enviados. </p> <pre class="concept-code"><code><span class="code-line" data-line="1">Content-Type: multipart/form-data; boundary=...</span></code></pre> <h3> Form Data vs JSON </h3> <div class="table-wrapper">
+<table>
+
+  <thead>
+
+    <tr>
+
+      <th>
+        Formato
+      </th>
+
+      <th>
+        cURL
+      </th>
+
+      <th>
+        Content-Type
+      </th>
+
+    </tr>
+
+  </thead>
+
+
+  <tbody>
+
+    <tr>
+
+      <td>
+        JSON
+      </td>
+
+      <td>
+        <code>-d</code>
+      </td>
+
+      <td>
+        <code>application/json</code>
+      </td>
+
+    </tr>
+
+
+    <tr>
+
+      <td>
+        Form Data
+      </td>
+
+      <td>
+        <code>-F</code>
+      </td>
+
+      <td>
+        <code>multipart/form-data</code>
+      </td>
+
+    </tr>
+
+  </tbody>
+
+</table>
+
+</div> <h3> Seu exemplo utilizando JSON </h3> <p class="concept-description"> O exemplo utilizado anteriormente envia as credenciais como JSON: </p> <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2"> https://serverest.dev/login \</span><span class="code-line" data-line="3"> -H "accept: application/json" \</span><span class="code-line" data-line="4"> -H "Content-Type: application/json" \</span><span class="code-line" data-line="5"> -d '{</span><span class="code-line" data-line="6"> "email": "horadoqa@qa.com",</span><span class="code-line" data-line="7"> "password": "1q2w3e4r"</span><span class="code-line" data-line="8"> }'</span></code></pre> <h3> Transformando para Form Data </h3> <p class="concept-description"> Para enviar os mesmos campos utilizando Form Data, substituímos o <strong>-d</strong> por campos <strong>-F</strong>. </p> <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2"> -F "email=horadoqa@qa.com" \</span><span class="code-line" data-line="3"> -F "password=1q2w3e4r" \</span><span class="code-line" data-line="4"> https://serverest.dev/login</span></code></pre> <h3> Form Data também permite arquivos </h3> <p class="concept-description"> Uma das principais características do <strong>multipart/form-data</strong> é permitir o envio de arquivos junto com outros campos. </p> <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2"> -F "nome=Relatório de QA" \</span><span class="code-line" data-line="3"> -F "arquivo=@relatorio.json" \</span><span class="code-line" data-line="4"> https://api.exemplo.com/upload</span></code></pre> <p class="concept-description"> Nesse caso, o campo <strong>nome</strong> contém um valor textual e o campo <strong>arquivo</strong> envia o arquivo localizado em <code>relatorio.json</code>. </p> <h3> Fluxo </h3> <div class="mermaid-wrapper">
+<div class="mermaid">
+
+  flowchart TD
+
+  A[Cliente] --> B[cURL]
+
+  B --> C["POST /login"]
+
+  C --> D["multipart/form-data"]
+
+  D --> E["email"]
+  D --> F["password"]
+
+  E --> G[Servidor]
+  F --> G
+
+  G --> H{Credenciais válidas?}
+
+  H -->|SIM| I[Login realizado]
+  H -->|NÃO| J[Erro de autenticação]
+
+  style A fill:#1976D2,color:#fff
+  style B fill:#42A5F5,color:#fff
+  style C fill:#64B5F6,color:#000
+  style D fill:#90CAF9,color:#000
+  style E fill:#90CAF9,color:#000
+  style F fill:#90CAF9,color:#000
+  style G fill:#42A5F5,color:#fff
+  style H fill:#FFF176,color:#000
+  style I fill:#2E7D32,color:#fff
+  style J fill:#C62828,color:#fff
+
+</div>
+
+</div> <h3> Resumindo </h3> <p class="concept-description"> Para enviar dados utilizando <strong>multipart/form-data</strong>, podemos utilizar: </p> <pre class="concept-code"><code><span class="code-line" data-line="1">curl -X POST \</span><span class="code-line" data-line="2"> -F "campo1=valor1" \</span><span class="code-line" data-line="3"> -F "campo2=valor2" \</span><span class="code-line" data-line="4"> https://api.exemplo.com/endpoint</span></code></pre> <div class="note">
+<span class="note-label">
+  QA Note
+</span>
+
+<p>
+  O <strong>-F</strong> é utilizado quando a API espera
+  dados no formato <strong>multipart/form-data</strong>.
+  Ele é especialmente importante em cenários de
+  <strong>upload de arquivos</strong>, onde podemos enviar
+  arquivos e campos adicionais na mesma requisição.
+</p>
+
+</div> </article>
+
+
+        <!-- =========================
+         FOOTER
+    ========================= -->
+
+        <footer>
+
+            <div class="footer-brand">
+                Hora do QA
+            </div>
+
+
+            <div class="footer-meta">
+
+                <span>
+                    CURL / REF-009
+                </span>
+
+                <span>
+                    FILE UPLOAD
+                </span>
+
+                <span class="footer-pass">
+                    READY
+                </span>
+
+            </div>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =========================
+       MERMAID
+  ========================= -->
+
+    <script type="module">
+
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+
+        mermaid.initialize({
+
+            startOnLoad: true,
+
+            theme: "dark",
+
+            securityLevel: "loose"
+
+        });
+
+    </script>
+
+</body>
+
+</html>
